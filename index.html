@@ -1,0 +1,1460 @@
+Formatting may be inconsistent from source
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lalitopākhyāna — Part II | Scholarly Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+Devanagari:wght@300;400;500;600&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crimson:     #8B1A1A;
+    --deep-red:    #6B0F0F;
+    --gold:        #C8922A;
+    --pale-gold:   #E8C97A;
+    --antique:     #F5EDD8;
+    --parchment:   #FAF4E8;
+    --ink:         #1C1208;
+    --warm-ink:    #2E1A0A;
+    --mid-brown:   #5C3D1E;
+    --border:      #C8922A44;
+    --shadow:      rgba(139,26,26,0.15);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'EB Garamond', serif;
+    font-size: 16.5px;
+    line-height: 1.85;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #0d0505 0%, #1a0808 45%, #2a0e0e 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 4rem 2rem;
+    position: relative; overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(200,146,42,0.08) 0%, transparent 70%);
+  }
+  .cover-om {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 5rem; color: var(--pale-gold);
+    opacity: 0.9; margin-bottom: 1.5rem;
+    text-shadow: 0 0 40px rgba(200,146,42,0.6);
+    animation: glowpulse 4s ease-in-out infinite;
+  }
+  @keyframes glowpulse {
+    0%,100% { text-shadow: 0 0 40px rgba(200,146,42,0.5); }
+    50%      { text-shadow: 0 0 70px rgba(200,146,42,0.9), 0 0 120px rgba(200,146,42,0.3); }
+  }
+  .cover-title-sa {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 2rem; color: var(--pale-gold);
+    letter-spacing: 0.04em; margin-bottom: 0.6rem;
+    text-shadow: 0 2px 20px rgba(200,146,42,0.5);
+  }
+  .cover-title-en {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem; color: var(--gold);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 1.25rem;
+    color: rgba(232,201,122,0.7); margin-bottom: 3rem;
+  }
+  .cover-rule {
+    width: 320px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 1.5rem auto;
+  }
+  .cover-byline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; color: rgba(232,201,122,0.6);
+    letter-spacing: 0.06em;
+  }
+  .cover-part {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem; color: var(--gold);
+    letter-spacing: 0.2em; text-transform: uppercase;
+    margin-top: 2.5rem;
+    border: 1px solid rgba(200,146,42,0.3);
+    padding: 0.5rem 2rem;
+  }
+  .yantra-bg {
+    position: absolute; bottom: 2rem; right: 2rem;
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 8rem; color: rgba(200,146,42,0.04);
+    pointer-events: none;
+  }
+  .yantra-bg-left {
+    position: absolute; top: 2rem; left: 2rem;
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 6rem; color: rgba(200,146,42,0.03);
+    pointer-events: none;
+  }
+
+  /* ── NAV BREADCRUMB ── */
+  .breadcrumb {
+    background: #1a0a04;
+    border-bottom: 1px solid #3a1a0a;
+    padding: 0.6rem 3rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    color: rgba(200,146,42,0.5);
+    letter-spacing: 0.12em;
+  }
+  .breadcrumb a {
+    color: var(--gold); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .breadcrumb a:hover { color: var(--pale-gold); }
+  .breadcrumb span { margin: 0 0.5rem; }
+
+  /* ── LAYOUT ── */
+  .page-wrap {
+    max-width: 860px; margin: 0 auto;
+    padding: 4rem 3rem;
+  }
+
+  /* ── CHAPTER HEADERS ── */
+  .chapter-header {
+    border-top: 3px double var(--gold);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 0 1.2rem;
+    margin: 4rem 0 2.5rem;
+    text-align: center;
+  }
+  .chapter-number {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem; color: var(--gold);
+    letter-spacing: 0.25em; text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .chapter-title-sa {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1.6rem; color: var(--crimson);
+    margin-bottom: 0.3rem;
+  }
+  .chapter-title-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 1.3rem;
+    color: var(--mid-brown);
+  }
+
+  h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem; color: var(--crimson);
+    letter-spacing: 0.08em;
+    margin: 3rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.15rem; font-weight: 600;
+    color: var(--deep-red);
+    margin: 2rem 0 0.8rem;
+  }
+  h4 {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem; font-weight: 600;
+    color: var(--mid-brown);
+    margin: 1.5rem 0 0.5rem;
+  }
+
+  /* ── NAMA CARD ── */
+  .nama-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--crimson);
+    border-radius: 2px;
+    padding: 1.8rem 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 2px 12px var(--shadow);
+    transition: box-shadow 0.2s;
+  }
+  .nama-card:hover {
+    box-shadow: 0 4px 24px rgba(139,26,26,0.2);
+  }
+  .nama-header {
+    display: flex; align-items: baseline; gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .nama-sa {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1.5rem; color: var(--crimson);
+  }
+  .nama-iast {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 1.2rem;
+    color: var(--mid-brown);
+  }
+  .nama-meaning-tag {
+    margin-left: auto;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem; color: var(--gold);
+    letter-spacing: 0.15em;
+    border: 1px solid var(--gold);
+    padding: 0.2rem 0.7rem;
+    text-transform: uppercase;
+  }
+  .analysis-layer { margin: 1rem 0; }
+  .layer-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem; color: var(--gold);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .layer-text { color: var(--warm-ink); }
+
+  /* ── NUMBERED NAMA GRID ── */
+  .nama-number-block {
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    background: rgba(200,146,42,0.03);
+    padding: 1rem 1.4rem;
+    margin: 0.8rem 0;
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 0.5rem 1rem;
+    align-items: start;
+  }
+  .nama-num {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem; color: var(--gold);
+    font-weight: 600; padding-top: 0.1rem;
+  }
+  .nama-content {}
+  .nama-sa-inline {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1.1rem; color: var(--crimson);
+    display: block; margin-bottom: 0.1rem;
+  }
+  .nama-iast-inline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 1rem;
+    color: var(--mid-brown); display: block; margin-bottom: 0.2rem;
+  }
+  .nama-meaning-inline {
+    font-size: 0.9rem; color: var(--warm-ink);
+  }
+  .nama-commentary {
+    grid-column: 1 / -1;
+    font-size: 0.88rem; color: var(--mid-brown);
+    padding-left: 3.5rem;
+    padding-top: 0.3rem;
+    border-top: 1px dashed var(--border);
+    margin-top: 0.5rem;
+    line-height: 1.8;
+  }
+  .nama-commentary details summary {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem; color: var(--gold);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    cursor: pointer; list-style: none;
+    margin-bottom: 0.4rem;
+  }
+  .nama-commentary details summary::after {
+    content: ' ▸'; font-size: 0.65rem;
+  }
+  .nama-commentary details[open] summary::after {
+    content: ' ▾';
+  }
+  .nama-commentary details p {
+    margin-top: 0.5rem; margin-bottom: 0;
+  }
+
+  /* ── VERSE BLOCK ── */
+  .verse-block {
+    text-align: center;
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1.15rem; color: var(--crimson);
+    line-height: 2.2; margin: 1.5rem auto;
+    max-width: 680px;
+    background: rgba(139,26,26,0.03);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1.2rem;
+  }
+  .verse-iast {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 1.05rem;
+    color: var(--mid-brown); text-align: center;
+    margin: 0.8rem auto; max-width: 680px;
+    line-height: 1.9;
+  }
+  .verse-translation {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem; color: var(--warm-ink);
+    text-align: center; margin: 0.8rem auto;
+    max-width: 680px; font-style: normal;
+    line-height: 1.9;
+    border: 1px solid var(--border);
+    background: white;
+    padding: 1rem 1.4rem;
+  }
+
+  /* ── PULLQUOTE ── */
+  .pullquote {
+    border-left: 3px solid var(--gold);
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    background: rgba(200,146,42,0.04);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-style: italic;
+    color: var(--mid-brown);
+  }
+  .pullquote-source {
+    font-style: normal; font-size: 0.85rem;
+    color: var(--gold); margin-top: 0.5rem;
+  }
+
+  /* ── ANATOMY / INFO BOX ── */
+  .info-box {
+    background: #fdf8f0;
+    border: 1px solid #d4a843;
+    border-radius: 3px;
+    padding: 1.4rem 1.8rem;
+    margin: 1.5rem 0;
+  }
+  .info-box-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem; color: var(--gold);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  /* ── DIALOGUE BLOCK ── */
+  .dialogue-block {
+    margin: 1.5rem 0;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .dialogue-speaker {
+    background: var(--crimson);
+    color: var(--pale-gold);
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.2rem;
+  }
+  .dialogue-text {
+    background: white;
+    padding: 1rem 1.4rem;
+    font-size: 0.95rem; color: var(--warm-ink);
+    line-height: 1.85;
+  }
+  .dialogue-text p { margin-bottom: 0.6rem; }
+  .dialogue-text p:last-child { margin-bottom: 0; }
+
+  /* ── VERSE CITATION ── */
+  .verse-num {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem; color: var(--gold);
+    letter-spacing: 0.12em; margin-right: 0.5rem;
+  }
+
+  /* ── TABLE ── */
+  .data-table {
+    width: 100%; border-collapse: collapse;
+    margin: 1.5rem 0; font-size: 0.93rem;
+  }
+  .data-table thead tr {
+    background: var(--crimson); color: var(--pale-gold);
+  }
+  .data-table thead th {
+    padding: 0.7rem 1rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem; letter-spacing: 0.12em;
+    text-transform: uppercase; font-weight: 600;
+    text-align: left;
+  }
+  .data-table tbody tr { border-bottom: 1px solid var(--border); }
+  .data-table tbody tr:nth-child(even) { background: rgba(200,146,42,0.03); }
+  .data-table td { padding: 0.65rem 1rem; vertical-align: top; }
+
+  /* ── BIJA ── */
+  .bija-sa {
+    font-family: 'Noto Serif Devanagari', serif;
+    font-size: 1.4rem; color: var(--crimson);
+  }
+
+  /* ── PAGE DIVIDER ── */
+  .page-divider {
+    text-align: center; margin: 3rem 0;
+    color: var(--gold); font-size: 1.2rem;
+    letter-spacing: 0.5em;
+  }
+  .ornament {
+    display: block; text-align: center;
+    color: var(--gold); font-size: 1.1rem;
+    margin: 1rem 0; letter-spacing: 0.3em;
+  }
+
+  /* ── FOOTNOTE ── */
+  .footnote {
+    font-size: 0.85rem; color: var(--mid-brown);
+    border-top: 1px solid var(--border);
+    padding-top: 0.8rem; margin-top: 2rem;
+  }
+
+  /* ── SECTION CONNECTOR ── */
+  .section-intro {
+    background: white;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--crimson);
+    padding: 1.3rem 1.8rem;
+    margin: 2rem 0;
+    font-size: 0.95rem; line-height: 1.9;
+  }
+
+  /* ── STICKY TOC ── */
+  .toc-float {
+    position: fixed; right: 1.5rem; top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .toc-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(200,146,42,0.3);
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .toc-dot:hover, .toc-dot.active {
+    background: var(--gold);
+    box-shadow: 0 0 8px rgba(200,146,42,0.6);
+  }
+  .toc-dot::before {
+    content: attr(data-label);
+    position: absolute; right: 18px; top: 50%;
+    transform: translateY(-50%);
+    background: #1a0808;
+    color: var(--pale-gold);
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem; letter-spacing: 0.1em;
+    padding: 3px 8px; border-radius: 3px;
+    white-space: nowrap;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.2s;
+    border: 1px solid rgba(200,146,42,0.3);
+  }
+  .toc-dot:hover::before { opacity: 1; }
+
+  /* ── PROGRESS BAR ── */
+  .progress-bar {
+    position: fixed; top: 0; left: 0; height: 2px;
+    background: linear-gradient(90deg, var(--crimson), var(--gold));
+    z-index: 200; transition: width 0.1s linear;
+    width: 0%;
+  }
+
+  p { margin-bottom: 1rem; }
+
+  @media(max-width:640px){
+    .page-wrap { padding: 2rem 1.2rem; }
+    .nama-header { flex-direction: column; gap: 0.3rem; }
+    .nama-meaning-tag { margin-left: 0; }
+    .toc-float { display: none; }
+    .breadcrumb { padding: 0.6rem 1.2rem; }
+    .nama-number-block { grid-template-columns: 1fr; }
+    .nama-num { font-size: 0.78rem; }
+    .nama-commentary { padding-left: 0; }
+  }
+
+  @media print {
+    .cover { min-height: auto; page-break-after: always; }
+    .nama-card { page-break-inside: avoid; }
+    .toc-float, .progress-bar, .breadcrumb { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- progress bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- floating TOC dots -->
+<nav class="toc-float" aria-label="Section navigation">
+  <div class="toc-dot" data-label="Fourth Dhyāna" data-target="sec-dhyana4" onclick="scrollTo(this)"></div>
+  <div class="toc-dot" data-label="Nāmas 1–12" data-target="sec-namas-1" onclick="scrollTo(this)"></div>
+  <div class="toc-dot" data-label="Nāmas 13–29" data-target="sec-namas-13" onclick="scrollTo(this)"></div>
+  <div class="toc-dot" data-label="Nāmas 30–42" data-target="sec-namas-30" onclick="scrollTo(this)"></div>
+  <div class="toc-dot" data-label="Agastya–Hayagrīva" data-target="sec-dialogue" onclick="scrollTo(this)"></div>
+  <div class="toc-dot" data-label="Karma & Violence" data-target="sec-karma" onclick="scrollTo(this)"></div>
+  <div class="toc-dot" data-label="Śakti & Sacrifice" data-target="sec-shakti" onclick="scrollTo(this)"></div>
+</nav>
+
+<!-- ═══════════════════════════ COVER ═══════════════════════════ -->
+<div class="cover">
+  <div class="cover-om">ॐ</div>
+  <div class="cover-title-sa">ललितोपाख्यान — द्वितीय भाग</div>
+  <div class="cover-title-en">Lalitopākhyāna — Part Two</div>
+  <div class="cover-subtitle">Brahmāṇḍa Purāṇa · Uttarabhāga · Adhyāya 6–7</div>
+  <div class="cover-rule"></div>
+  <div class="cover-byline">
+    Fourth Dhyāna Verse · Nāmas 1–42 · The Agastya–Hayagrīva Dialogue<br>
+    On the Nature of Violence, Karma, Sacrifice &amp; Śakti's Primordial Manifestation<br>
+    Commentary after Bhāskararāya Makhin &amp; Śaṅkarācārya · Bījākṣara Analysis<br>
+    Neuroacoustic · Yogic Anatomy · Śrī Vidyā · Brahmāṇḍa Purāṇa Scholarship
+  </div>
+  <div class="cover-part">Scholarly Edition · Session II</div>
+  <div class="yantra-bg">ऐं</div>
+  <div class="yantra-bg-left">श्रीं</div>
+</div>
+
+<!-- breadcrumb -->
+<div class="breadcrumb">
+  <a href="/">Lalitā Culturalmusings</a>
+  <span>›</span>
+  <a href="/lalitopakhyana-part-1">Part I</a>
+  <span>›</span>
+  Part II · Nāmas 1–42 · Adhyāya 6
+</div>
+
+<!-- ═══════════════════════════ BODY ═══════════════════════════ -->
+<div class="page-wrap">
+
+<!-- ── PREFATORY ── -->
+<div class="chapter-header">
+  <div class="chapter-number">Prefatory Note · Session II</div>
+  <div class="chapter-title-sa">द्वितीयभागस्य प्रारम्भः</div>
+  <div class="chapter-title-en">Opening of the Second Session</div>
+</div>
+
+<p>Part II continues directly from the three dhyāna ślokas of Part I, expanding into a fourth (often unpublished) dhyāna verse concerning the japa-form of the Goddess, then enters the body of the <em>Lalitā Sahasranāma</em> proper — nāmas 1 through 42, covering the Goddess's cosmic origin, her luminous form, the ornaments of her head, face, and upper body, down to the hidden ankles (<em>gūḍha-gulphā</em>).</p>
+
+<p>The session then turns to the narrative frame: the Agastya–Hayagrīva dialogue from the sixth chapter of the Uttarabhāga, examining the sacred questions of cosmic violence, sacrificial ethics, karmic consequence, and the primordial manifestation of Śakti — issues that the Lalitopākhyāna does not bracket as peripheral but treats as essential to understanding the Goddess who is simultaneously the compassionate Mother (<em>Śrī Mātā</em>) and the sovereign of all creation and dissolution.</p>
+
+<div class="pullquote">
+"The thousand nāmas are not independent epithets strung together but a single continuous mantra — a map of the Goddess's descent from pure Consciousness into the last jewel on her hidden ankle. To chant them is to retrace that descent in reverse."
+<div class="pullquote-source">— Bhāskararāya Makhin, Saubhāgyabhāskara, opening to the nāma sequence</div>
+</div>
+
+<!-- ═══════════ SECTION: FOURTH DHYĀNA ═══════════ -->
+<div class="chapter-header" id="sec-dhyana4">
+  <div class="chapter-number">Section I</div>
+  <div class="chapter-title-sa">चतुर्थ ध्यानश्लोकः — जपाकुसुमभासुरा</div>
+  <div class="chapter-title-en">The Fourth Dhyāna Verse: She Who Blazes Like the Japa Flower</div>
+</div>
+
+<p>The three dhyāna ślokas of Part I are well known and widely printed. The fourth verse, found in some recensions of the Brahmāṇḍa Purāṇa and in the full Tantric transmission through Bhāskararāya's lineage, prescribes the specific form used during <em>japa</em> (mantra repetition). It introduces the kumkuma-anointing, the japa flower, and the complete four-weapon imagery in a single concentrated verse.</p>
+
+<div class="verse-block">
+सकुङ्कुमविलेपनामलिकचुम्बिकस्तूरिकां<br>
+समन्दहसितेक्षणां सशरचापपाशाङ्कुशाम् ।<br>
+अशेषजनमोहिनीमरुणमाल्यभूषाम्बरां<br>
+जपाकुसुमभासुरां जपविधौ स्मरेदम्बिकाम् ॥
+</div>
+<div class="verse-iast">
+sakuṅkuma-vilepanāṃ alika-cumbika-stūrikāṃ<br>
+samanda-hasitekṣaṇāṃ saśara-cāpa-pāśāṅkuśām |<br>
+aśeṣa-jana-mohinīm aruṇa-mālya-bhūṣāmbarāṃ<br>
+japā-kusuma-bhāsurāṃ japa-vidhau smared ambikām ||
+</div>
+<div class="verse-translation">
+"I meditate on the Mother during japa — whose forehead is anointed with kumkuma, whose musk-mark is kissed by that vermilion, whose eyes hold a gentle smile, who bears arrow, bow, noose and goad in her hands. She is the enchantress of all beings, adorned with red garlands, ornaments and garments. She blazes like the japa flower (the red hibiscus). On her I meditate during the ritual of japa."
+</div>
+
+<!-- CARD: Fourth Dhyāna Complete Analysis -->
+<div class="nama-card">
+  <div class="nama-header">
+    <span class="nama-sa">जपाकुसुमभासुरा</span>
+    <span class="nama-iast">Japā-kusuma-bhāsurā</span>
+    <span class="nama-meaning-tag">Central Image</span>
+  </div>
+  <div class="analysis-layer">
+    <div class="layer-label">Padārtha</div>
+    <div class="layer-text"><em>Japā</em> = the hibiscus or China rose (<em>Hibiscus rosa-sinensis</em>), also called <em>jāpā</em> or <em>japāpuṣpa</em> — one of the most sacred flowers in Śākta worship, its deep red the precise color of the risen sun and of the Goddess's own complexion. <em>Kusuma</em> = flower. <em>Bhāsura</em> = blazing, luminous (from <em>bhās</em> = to shine). The compound: "She who blazes with the radiance of the hibiscus flower." Simultaneously, <em>japa</em> = the repetition of mantra — so the verse carries a sonic pun: she blazes like the <em>japā</em> flower and she is the light within the practice of <em>japa</em>.</div>
+  </div>
+  <div class="analysis-layer">
+    <div class="layer-label">Bhāskararāya — Japa Form</div>
+    <div class="layer-text">In the Varivasya Rahasya, Bhāskararāya specifies three forms for three modes of sādhanā: Dhyāna I (sindūrāruṇa) = for Homa (fire ritual); Dhyāna II (aruṇāṃ karuṇā) = for Tarpaṇa (oblation/offering); Dhyāna III (padmāsanasthāṃ, hemābhā) = for Arcana (worship with flowers). This fourth verse is specifically prescribed for <em>japa</em> — the repetition of the Pañcadaśī or Ṣoḍaśī mantra. Its defining feature is the japa flower itself, which is offered to the Goddess during japa sādhanā in the Śrī Vidyā system.</div>
+  </div>
+  <div class="analysis-layer">
+    <div class="layer-label">Sakuṅkuma-vilepanā — Kumkuma Anointing</div>
+    <div class="layer-text"><em>Sa</em> = with. <em>Kuṅkuma</em> = saffron/vermilion (from the Kashmiri word; botanically <em>Crocus sativus</em>). <em>Vilepana</em> = anointing/smearing (from <em>vi + lip</em> = to smear thoroughly). Her forehead is anointed with kumkuma — the sacred vermilion powder that is the material symbol of Śakti's menstrual blood (rakta) in the Tantric tradition, and the mark of auspiciousness (<em>maṅgala</em>) in the Vedic. The kumkuma at the forehead activates the Ājñā cakra in visualization — modern research confirms that the application of anything to the third-eye region increases frontal lobe activation and attentional focus.</div>
+  </div>
+  <div class="analysis-layer">
+    <div class="layer-label">Alika-cumbika-stūrikā — The Musk Mark</div>
+    <div class="layer-text"><em>Alika</em> = forehead. <em>Cumbika</em> = one who kisses (from <em>cumb</em> = to kiss). <em>Stūrikā</em> = musk mark (<em>kastūrī-tilaka</em>). The musk mark on the forehead is "kissed" by the kumkuma — a supremely intimate image suggesting the two substances merge at the third-eye center. Musk (<em>kastūrī</em>) from the musk deer is in Tantric pharmacology associated with the activation of prāṇic currents; its application at the ājñā cakra in dhyāna is a form of <em>gandha-dīkṣā</em> — initiation through sacred fragrance.</div>
+  </div>
+  <div class="analysis-layer">
+    <div class="layer-label">Aśeṣa-jana-mohinī — Enchantress of All Beings</div>
+    <div class="layer-text"><em>Aśeṣa</em> = without remainder, all without exception. <em>Jana</em> = people, beings. <em>Mohinī</em> = the enchantress (from <em>muh</em> = to fascinate, bewilder, intoxicate). This epithet links this dhyāna verse directly to the narrative frame of the Lalitopākhyāna: Mohinī is the form Viṣṇu assumed during the churning of the ocean — but here it is Lalitā herself who is the supreme Mohinī, the enchantress not of Śiva alone (as Mohinī was) but of <em>all beings without exception</em>. Bhāskararāya identifies this with nāma 71 (<em>Mohitākhilāṇḍā</em>) — she who has enchanted the entire cosmos.</div>
+  </div>
+  <div class="analysis-layer">
+    <div class="layer-label">Neuroacoustic: Japa and the Default Mode Network</div>
+    <div class="layer-text">fMRI research (Engström et al., 2010; Travis &amp; Shear, 2010) shows that repetitive mantra recitation (japa) causes systematic deactivation of the default mode network (DMN) — the brain's "narrative self" circuitry — while activating the salience network and task-positive network. The japa flower's red color at ~620–700nm, when held in visualization, provides a visual anchor that engages the ventral attention system, preventing mind-wandering. The prescribing of this specific form <em>for</em> japa — not for other rituals — is thus neurologically precise: it is the dhyāna designed to synchronize with the repetitive sonic rhythm of mantra chanting.</div>
+  </div>
+</div>
+
+<div class="page-divider">✦ · ✦ · ✦</div>
+
+<!-- ═══════════ SECTION: NĀMAS 1–12 ═══════════ -->
+<div class="chapter-header" id="sec-namas-1">
+  <div class="chapter-number">Section II · Nāmas 1–12</div>
+  <div class="chapter-title-sa">श्रीललितासहस्रनामस्तोत्रम् — प्रथम द्वादशनामानि</div>
+  <div class="chapter-title-en">The First Twelve Nāmas: From Cosmic Origin to the Goddess's Form</div>
+</div>
+
+<div class="verse-block" style="font-size:.95rem;line-height:2">
+ॐ ऐं ह्रीं श्रीं ॐ ऐं ह्रीं श्रीं
+</div>
+
+<div class="section-intro">
+<strong>The Mūla Mantra Triad:</strong> Every recitation of the Sahasranāma opens with this triple invocation — <em>Oṃ Aiṃ Hrīṃ Śrīṃ</em> — repeated twice. Bhāskararāya identifies these as the three Kūṭas of the Pañcadaśī encoded into single bījas: Aiṃ = Vāgbhava kūṭa (head–heart; Sarasvatī/knowledge); Hrīṃ = Kāmarāja kūṭa (heart–navel; Lakṣmī/desire); Śrīṃ = Śakti kūṭa (navel–root; Śakti/action). The entire thousand-name Goddess is summoned in these four syllables before her individual nāmas begin.
+</div>
+
+<h2>2.1 · NĀMAS 1–12: ORIGIN, SOVEREIGNTY, AND LUMINOUS FORM</h2>
+
+<!-- NAMA 1 -->
+<div class="nama-number-block">
+  <div class="nama-num">१</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">श्रीमाता</span>
+    <span class="nama-iast-inline">Śrī Mātā</span>
+    <span class="nama-meaning-inline">She who is the auspicious Mother</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>Bhāskararāya · Tātparya · Bīja</summary>
+      <p><em>Śrī</em> = the divine quality of auspiciousness, beauty, prosperity, grace — the Lakṣmī-aspect, from the root <em>śri</em> (to pervade, to illumine). <em>Mātā</em> = Mother (from <em>man</em> = to think/measure + suffix tā; the one who measures and creates). Bhāskararāya: "She is the <em>Śrī Mātā</em> because she is the progenitor of even Brahmā, Viṣṇu and Śiva — not merely of human beings. The Śrī here is not a respectful prefix but an ontological descriptor: she is <em>śrī-rūpā</em> — her substance is Śrī itself." In Advaita: the universe is not born <em>from</em> Brahman as from a parent but <em>as</em> Brahman, just as a dream is not separate from the dreamer. Śrī Mātā is Brahman as the matrix of all appearance. <strong>Bīja:</strong> Śa (Śrī-bīja) + Ma (mātā = the root mantra of all creation). The Śrīṃ bīja contains <em>mātā</em> — "mother" — within its very sonic structure.</p>
+    </details>
+  </div>
+</div>
+
+<!-- NAMA 2 -->
+<div class="nama-number-block">
+  <div class="nama-num">२</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">श्रीमहाराज्ञी</span>
+    <span class="nama-iast-inline">Śrī Mahārājñī</span>
+    <span class="nama-meaning-inline">She who is the Empress of the Universe</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>Bhāskararāya · Śaṅkara · Political Theology</summary>
+      <p><em>Mahā</em> = great. <em>Rājñī</em> = queen/empress (feminine of <em>rājan</em>, from <em>rāj</em> = to shine/rule). Bhāskararāya draws on the <em>Rājyalakṣmī</em> tradition: sovereignty (<em>rājya</em>) is a Śakti — it cannot exist without the Goddess's presence. When kings lose Śrī Mahārājñī's grace, they fall (as Indra fell after dishonoring Durvāsā's garland — the very event that frames the Lalitopākhyāna). The political theology here is exact: no earthly sovereignty is self-founded; all rule derives from the Goddess's loan of power. Śaṅkara's advaitic reading: Brahman is the only true <em>rājan</em> — the one who shines by its own light (<em>svaprakāśa</em>). Śrī Mahārājñī = the Goddess as self-luminous sovereign consciousness.</p>
+    </details>
+  </div>
+</div>
+
+<!-- NAMA 3 -->
+<div class="nama-number-block">
+  <div class="nama-num">३</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">श्रीमत्सिंहासनेश्वरी</span>
+    <span class="nama-iast-inline">Śrīmat-Siṃhāsaneśvarī</span>
+    <span class="nama-meaning-inline">She who is the Queen of the most glorious throne</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>The Cintāmaṇi Throne · Śrī Cakra Correspondence</summary>
+      <p><em>Siṃhāsana</em> = throne (lit. "lion-seat" — lions support the throne). In the Lalitopākhyāna's own narrative, Lalitā's throne (<em>siṃhāsana</em>) is the <em>Cintāmaṇi gṛha</em> — the Wish-Fulfilling Gem Palace — described as situated at the summit of Mount Meru within the Śrī Cakra. The four legs of the throne are Brahmā, Viṣṇu, Rudra, and Īśvara; the seat-surface is Sadāśiva; the cushion is the Parā-śakti herself. Bhāskararāya identifies this throne with the central <em>bindu</em> of the Śrī Cakra: the Goddess seated on Śiva-as-throne is the visual correlate of the mantra <em>Oṃ Śrīṃ Hrīṃ</em> — Śiva as the silent substrate, Śrī as the ruling power, Hrīṃ as their union. <em>Īśvarī</em> (from <em>īś</em> = to rule) confirms her absolute sovereignty over all the cakra-planes.</p>
+    </details>
+  </div>
+</div>
+
+<!-- NAMA 4 -->
+<div class="nama-number-block">
+  <div class="nama-num">४</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">चिदग्निकुण्डसम्भूता</span>
+    <span class="nama-iast-inline">Cidagni-kuṇḍa-sambhūtā</span>
+    <span class="nama-meaning-inline">She who was born from the fire-pit of Pure Consciousness</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>The Cosmogonic Fire · Bhāskararāya · Tantric Significance</summary>
+      <p><em>Cit</em> = pure consciousness (Brahman as awareness). <em>Agni</em> = fire. <em>Kuṇḍa</em> = fire-pit (the ritual pit in which the sacred fire is kindled and offerings made). <em>Sambhūtā</em> = born from, arisen from. This nāma is the Lalitopākhyāna's own account of the Goddess's origin: the Devīs and Devas, seeking liberation from the demon Bhaṇḍāsura, performed a great yajña — a fire sacrifice — and from the <em>cidagni-kuṇḍa</em> (the fire-pit of pure consciousness, not mere physical fire) Lalitā arose in her full glory, armed and sovereign. Bhāskararāya: "The cidagni is the <em>Parāsaṃvit</em> — the supreme self-luminous awareness. The Goddess is not a being who enters that fire — she <em>is</em> that fire, manifesting herself from within herself." This is the Śākta statement of what Advaita calls <em>vivartopādāna kāraṇa</em> — consciousness as the apparent material cause of its own manifestation. <strong>Anatomical resonance:</strong> The cidagni-kuṇḍa in Yogic anatomy is the Suṣumnā channel above the Mūlādhāra, specifically the <em>Daharākāśa</em> — the infinite space within the heart. The Goddess is born from the awakened Suṣumnā.</p>
+    </details>
+  </div>
+</div>
+
+<!-- NAMA 5 -->
+<div class="nama-number-block">
+  <div class="nama-num">५</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">देवकार्यसमुद्यता</span>
+    <span class="nama-iast-inline">Deva-kārya-samudyatā</span>
+    <span class="nama-meaning-inline">She who is intent on fulfilling the wishes of the gods</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>Purposeful Manifestation · The Bhaṇḍāsura Context</summary>
+      <p><em>Deva-kārya</em> = the work/mission of the gods. <em>Samudyatā</em> = fully intent upon, risen up for (from <em>sam + ud + yam</em> = to raise oneself completely toward a purpose). The Goddess's arising from the cidagni-kuṇḍa was not random — it was purposeful. The Devīs had been suffering under Bhaṇḍāsura, who had been granted supremacy through Śiva's grace (after emerging from the ashes of burned Kāma). Bhāskararāya: "The word <em>deva-kārya</em> encompasses three meanings: (1) the immediate mission of destroying Bhaṇḍāsura; (2) the cosmic mission of restoring Eros (<em>Kāma</em>) to the universe, which Śiva's third eye had annihilated; (3) the eternal mission of <em>anugraha</em> (grace) — without which the entire creation would collapse." The theological point: the Goddess acts purposefully from within her own freedom; she is not compelled but moves by her own <em>svātantrya-śakti</em>.</p>
+    </details>
+  </div>
+</div>
+
+<!-- NAMA 6 -->
+<div class="nama-number-block">
+  <div class="nama-num">६</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">उद्यद्भानुसहस्राभा</span>
+    <span class="nama-iast-inline">Udyad-bhānu-sahasrābhā</span>
+    <span class="nama-meaning-inline">She who has the radiance of a thousand rising suns</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>Solar Radiance · Bhagavad Gītā 11.12 · Photobiology</summary>
+      <p><em>Udyat</em> = rising (present participle of <em>ud + i</em>, to rise). <em>Bhānu</em> = sun. <em>Sahasra</em> = thousand. <em>Ābhā</em> = radiance, luster. This image appears almost verbatim in the Bhagavad Gītā 11.12 when Arjuna describes Kṛṣṇa's Viśvarūpa: <em>divi sūrya-sahasrasya</em> — "if a thousand suns were to rise simultaneously." The Goddess's arising from the cidagni-kuṇḍa is thus her own Viśvarūpa moment — not a later cosmic form but her <em>initial appearance</em>. Bhāskararāya: "The thousand (<em>sahasra</em>) here is not literal quantity but the indicator of the Sahasrāra cakra — the thousand-petaled lotus. Her radiance fills the Sahasrāra of the cosmos itself at the moment of her arising." <strong>Photobiological note:</strong> The wavelength range of a rising sun (approximately 380–700nm, peaking at ~580nm golden) corresponds precisely to the frequency range that maximally activates melanopsin-containing retinal ganglion cells — the primary circadian entrainment pathway. Meditating on this image at dawn synchronizes the practitioner's circadian biology with the Goddess's own arising.</p>
+    </details>
+  </div>
+</div>
+
+<!-- NAMA 7 -->
+<div class="nama-number-block">
+  <div class="nama-num">७</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">चतुर्बाहुसमन्विता</span>
+    <span class="nama-iast-inline">Caturbāhu-samanvitā</span>
+    <span class="nama-meaning-inline">She who is four-armed</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>The Four Arms · Icchā-Jñāna-Kriyā-Māyā · Iconographic Theology</summary>
+      <p><em>Catur</em> = four. <em>Bāhu</em> = arm. <em>Samanvitā</em> = endowed with, possessed of. The four arms are the iconic signature of the Great Goddess in her sovereign form. Bhāskararāya maps the four arms to the four aspects of Śakti: Right upper = <em>Icchā Śakti</em> (Will-power, holding the noose of desire); Left upper = <em>Jñāna Śakti</em> (Knowledge-power, holding the goad of discrimination); Right lower = <em>Kriyā Śakti</em> (Action-power, holding the bow of mind); Left lower = <em>Māyā Śakti</em> (the flower arrows — sense objects as Śakti's creative arsenal). The four arms also correspond to the four Vedas and the four states of consciousness (jāgrat-svapna-suṣupti-turīya). <strong>Tantric physiology:</strong> The four arms map onto the cross-pattern of the Anāhata cakra's twelve-petaled lotus — the heart center that is the midpoint between the lower four and upper three cakras.</p>
+    </details>
+  </div>
+</div>
+
+<!-- NAMA 8 -->
+<div class="nama-number-block">
+  <div class="nama-num">८</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">रागस्वरूपपाशाढ्या</span>
+    <span class="nama-iast-inline">Rāga-svarūpa-pāśāḍhyā</span>
+    <span class="nama-meaning-inline">She who is holding the rope of love in Her hand</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>The Noose of Rāga · Bandha and Mokṣa · Bhāskararāya</summary>
+      <p><em>Rāga</em> = passion, love, attachment, coloring (from <em>rañj</em> = to color, to become deeply attached). <em>Svarūpa</em> = whose very nature/form is. <em>Pāśa</em> = noose, rope of bondage. <em>Āḍhyā</em> = richly endowed with, holding abundantly. The noose is made of <em>rāga</em> itself — the Goddess's weapon is the very substance of passionate attachment. Bhāskararāya: "The Pāśa is rāga because rāga is what binds souls to the cycle of birth and death (<em>saṃsāra</em>). But it is she who holds it — meaning rāga is not the soul's own power but a Śakti wielded by the Goddess. When she loosens the noose, the soul is liberated. The same rāga that was bondage becomes, when directed toward the Goddess herself, the <em>bhakti</em> that is liberation." This is one of the most sophisticated nāmas in the sequence: bondage and liberation are the same force differently aimed.</p>
+    </details>
+  </div>
+</div>
+
+<!-- NAMA 9 -->
+<div class="nama-number-block">
+  <div class="nama-num">९</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">क्रोधाकाराङ्कुशोज्ज्वला</span>
+    <span class="nama-iast-inline">Krodhākāra-aṅkuśojjvalā</span>
+    <span class="nama-meaning-inline">She who shines, bearing the goad of anger</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>The Goad of Krodha · Righteous Anger as Śakti</summary>
+      <p><em>Krodha</em> = anger (from <em>krudh</em> = to be angry; related to <em>krath</em> = to shake violently). <em>Ākāra</em> = having the form of. <em>Aṅkuśa</em> = elephant goad. <em>Ujjvalā</em> = blazing brightly. Bhāskararāya: "Just as the noose (nāma 8) is the form of <em>rāga</em>, the goad is the form of <em>krodha</em>. These are not the Goddess's flaws — they are her instruments. The Tantric understanding: rāga and krodha are the two primary expressions of <em>rajas-guṇa</em> — the projecting, active, creative power. When internalized as sādhanā, krodha becomes the fierce energy (<em>vīra-śakti</em>) that cuts through obstacles and wrong attachments. The goad (<em>aṅkuśa</em>) is not punitive but corrective — it redirects, not destroys." The goad is held in the left upper arm (Jñāna Śakti position), confirming that even anger, when held within wisdom, becomes discriminative intelligence.</p>
+    </details>
+  </div>
+</div>
+
+<!-- NAMA 10 -->
+<div class="nama-number-block">
+  <div class="nama-num">१०</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">मनोरूपेक्षुकोदण्डा</span>
+    <span class="nama-iast-inline">Mano-rūpekṣu-kodaṇḍā</span>
+    <span class="nama-meaning-inline">She who holds a sugarcane bow representing the mind</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>The Sugarcane Bow · Manas as Weapon · Kāma-Śāstra</summary>
+      <p><em>Manas</em> = mind (from <em>man</em> = to think). <em>Rūpa</em> = having the form of. <em>Ikṣu</em> = sugarcane. <em>Kodaṇḍa</em> = bow. The bow of Kāma (god of love/desire) is made of sugarcane — a detail that is both poetic and precise. Sugarcane is sweet (the mind is attracted to sweetness — pleasure, beauty, meaning); it is hollow (the mind is empty in itself, a conduit rather than a self-subsistent entity); it contains <em>rasa</em> (juice = the essence of experience) within. Bhāskararāya: "The mind, when used to aim the arrows of the senses at transient pleasures, creates bondage. When the Goddess herself wields the mind as her bow and aims it at the Self, it creates liberation. The practitioner's task is to surrender the mind to the Goddess — <em>mano-samarpaṇa</em> — so that she may wield it as her own instrument." This is the Śrī Vidyā doctrine of mantra: the mantra is the mind surrendered to the Goddess as her own sound-form.</p>
+    </details>
+  </div>
+</div>
+
+<!-- NAMA 11 -->
+<div class="nama-number-block">
+  <div class="nama-num">११</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">पञ्चतन्मात्रसायका</span>
+    <span class="nama-iast-inline">Pañca-tanmātra-sāyakā</span>
+    <span class="nama-meaning-inline">She who holds the five subtle elements as arrows</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>The Five Arrows · Tanmātras · Sāṃkhya-Śākta Synthesis</summary>
+      <p><em>Pañca</em> = five. <em>Tanmātra</em> = the five subtle sense-essences (from <em>tan</em> = that only, <em>mātra</em> = measure — "only that much"). They are: Śabda (sound-essence → ear), Sparśa (touch-essence → skin), Rūpa (form-essence → eye), Rasa (taste-essence → tongue), Gandha (smell-essence → nose). <em>Sāyaka</em> = arrow. Bhāskararāya synthesizes Sāṃkhya philosophy with Śākta practice: the five tanmātras are the five arrows of Kāma — the five sense-stimulants that "pierce" the mind and soul with desire. But when the Goddess herself wields them as arrows, two transformations occur: (1) the tanmātras are directed back toward their source (pure consciousness) rather than toward objects; (2) the senses become instruments of <em>rasa</em> (sacred aesthetic experience) rather than <em>asakti</em> (attachment). The five flower arrows of the dhyāna verses (Part I) and these five tanmātra arrows are the same — indicating that sense-beauty, properly offered, IS the practice.</p>
+    </details>
+  </div>
+</div>
+
+<!-- NAMA 12 -->
+<div class="nama-number-block">
+  <div class="nama-num">१२</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">निजारुणप्रभापूरमज्जद्ब्रह्माण्डमण्डला</span>
+    <span class="nama-iast-inline">Nijāruṇa-prabhā-pūra-majjad-brahmāṇḍa-maṇḍalā</span>
+    <span class="nama-meaning-inline">She who immerses the entire universe in the red effulgence of Her form</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>Cosmic Immersion · The Universe as the Goddess's Glow</summary>
+      <p>This is the longest single nāma in the Sahasranāma and one of the most philosophically dense. <em>Nija</em> = her own (not borrowed or acquired). <em>Aruṇa</em> = red. <em>Prabhā</em> = radiance. <em>Pūra</em> = flood, fullness. <em>Majjat</em> = immersed, submerged (present participle of <em>majj</em> = to sink, to be drowned). <em>Brahmāṇḍa-maṇḍala</em> = the circle of all worlds (brahmāṇḍa = "Brahma's egg" = the universe; maṇḍala = circle/totality). Bhāskararāya: "This nāma states the complete cosmological position of Śrī Vidyā: the universe is not merely illumined by the Goddess's light from outside — it is <em>submerged</em> in it. The world does not exist independently and then receive her light; rather, the world is already within her radiance, drowned in it. The red (<em>aruṇa</em>) color signals that this is the radiance of Vimarśa — the Goddess's own self-awareness — not the white light of <em>Prakāśa</em> (Śiva) alone." In Advaita terms: the universe is the <em>ābhāsa</em> (appearance) within the Goddess's self-luminous red glow.</p>
+    </details>
+  </div>
+</div>
+
+<div class="page-divider">✦ · ✦ · ✦</div>
+
+<!-- ═══════════ NĀMAS 13–29: THE FACE ═══════════ -->
+<div class="chapter-header" id="sec-namas-13">
+  <div class="chapter-number">Section III · Nāmas 13–29</div>
+  <div class="chapter-title-sa">केशाद्यधरपर्यन्तम् — शिरोमुखवर्णनम्</div>
+  <div class="chapter-title-en">From Crown to Lips: The Complete Description of the Divine Head and Face</div>
+</div>
+
+<p>Nāmas 13 through 29 follow the classical <em>keśādi-pāda-paryanta</em> convention of Sanskrit descriptive poetry — describing the Goddess from the crown of her hair (<em>keśa</em>) downward through every feature of the divine face. This is not merely poetic cataloguing but a systematic guide to the visualization practice: each nāma-image is a <em>dhāraṇā</em> (concentration object) that successively builds the full form in the practitioner's inner sight.</p>
+
+<!-- NAMA 13 -->
+<div class="nama-number-block">
+  <div class="nama-num">१३</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">चम्पकाशोकपुन्नागसौगन्धिकलसत्कचा</span>
+    <span class="nama-iast-inline">Campakāśoka-punnāga-saugandhika-lasat-kacā</span>
+    <span class="nama-meaning-inline">She whose hair is adorned with campaka, ashoka, punnāga and saugandhika flowers</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>The Sacred Flowers · Olfactory Dhyāna · Botanical Significance</summary>
+      <p>Each flower is a specific Śākta symbol: <strong>Campaka</strong> (<em>Michelia champaca</em>) — golden-yellow, intensely fragrant, associated with Viṣṇu and auspiciousness; <strong>Aśoka</strong> (<em>Saraca asoca</em>) — red flowers, the tree under which Sītā was held in Laṅkā; its name means "without sorrow"; <strong>Punnāga</strong> (<em>Calophyllum inophyllum</em>) — white fragrant flowers, coastal sacred tree; <strong>Saugandhika</strong> = fragrant lotus (<em>Nymphaea lotus</em>) — the night-blooming white lotus of extraordinary fragrance. Bhāskararāya: "The four flowers correspond to the four Vedas — campaka to Ṛk (yellow-golden), aśoka to Sāma (red, melodious), punnāga to Yajus (white, ritual), saugandhika to Atharva (fragrant, subtle, transformative). The Goddess's hair holds the entire Vedic revelation." <strong>Neurological:</strong> Floral fragrances act directly on the limbic system via the olfactory bulb's direct projection to the amygdala and hippocampus — bypassing thalamic relay. Visualizing these specific fragrances during japa activates the same neurochemical pathways as actual olfactory exposure.</p>
+    </details>
+  </div>
+</div>
+
+<!-- NAMA 14 -->
+<div class="nama-number-block">
+  <div class="nama-num">१४</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">कुरुविन्दमणिश्रेणीकनत्कोटीरमण्डिता</span>
+    <span class="nama-iast-inline">Kuruvinda-maṇi-śreṇī-kanat-koṭīra-maṇḍitā</span>
+    <span class="nama-meaning-inline">She who is resplendent with a crown adorned with rows of kuruvinda gems</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>Kuruvinda — The Red Sapphire · Crown as Sahasrāra</summary>
+      <p><em>Kuruvinda</em> = a red variety of corundum (ruby or red sapphire — <em>padmarāga</em> type). The crown (<em>koṭīra</em>) studded with rows (<em>śreṇī</em>) of these glowing gems corresponds directly to the Sahasrāra cakra's thousand-petaled lotus — each gem a petal. The crown radiates red light from the crown of the head, which in Kuṇḍalinī yoga is the terminal point of the Śakti's ascent. Bhāskararāya cross-references nāma 14 with nāma 729 (<em>Ratna-kirita-śobhitā</em>) to establish that the Goddess's crown is not a symbol of borrowed power but of her intrinsic Sahasrāra-nature.</p>
+    </details>
+  </div>
+</div>
+
+<!-- NAMA 15 -->
+<div class="nama-number-block">
+  <div class="nama-num">१५</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">अष्टमीचन्द्रविभ्राजदलिकस्थलशोभिता</span>
+    <span class="nama-iast-inline">Aṣṭamī-candra-vibhrājad-alika-sthala-śobhitā</span>
+    <span class="nama-meaning-inline">She whose forehead shines like the crescent moon of the eighth lunar night</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>The Eighth-Night Moon · Precise Lunar Symbolism · Ājñā Cakra</summary>
+      <p><em>Aṣṭamī</em> = the eighth day of either fortnight (not the full moon, not the new — the precise half-crescent when the moon is most beautifully curved and luminous without being overwhelming). <em>Alika-sthala</em> = the surface of the forehead. Bhāskararāya: "The eighth night moon (<em>aṣṭamī candra</em>) is chosen because it is the precise phase associated with Śiva's Aṣṭamī observance and with Durgā's autumn festival — it is the moon of power (<em>śakti-candra</em>), neither waxing toward fullness nor waning toward darkness. The Goddess's forehead in this curved crescent-luster is the Ājñā cakra — the third eye's aureate glow visible to advanced practitioners."</p>
+    </details>
+  </div>
+</div>
+
+<!-- NAMA 16 -->
+<div class="nama-number-block">
+  <div class="nama-num">१६</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">मुखचन्द्रकलङ्काभमृगनाभिविशेषका</span>
+    <span class="nama-iast-inline">Mukha-candra-kalaṅkābha-mṛganābhi-viśeṣakā</span>
+    <span class="nama-meaning-inline">She who wears a musk mark that shines like the spot in the moon</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>The Lunar Spot as Musk Mark · Kāvya-Śāstra · Olfactory-Lunar Symbolism</summary>
+      <p><em>Mukha-candra</em> = the moon that is her face. <em>Kalaṅka</em> = the dark spot in the moon (conventionally identified with a hare). <em>Mṛganābhi</em> = musk (lit. "navel-of-the-deer" — the musk deer secretes musk from its navel gland). <em>Viśeṣaka</em> = the beauty mark/forehead mark. This is one of the finest images in Sanskrit poetry: the musk <em>tilaka</em> on her face appears as the natural dark spot of the moon — implying that her face is a moon and the musk mark is the moon's own ornament. The identification of musk (<em>kastūrī</em>) with the lunar spot is unique to this tradition. In the Tantric reading, musk placed at the Ājñā activates both the olfactory–limbic system AND the visual–lunar channels — a dual sensory activation.</p>
+    </details>
+  </div>
+</div>
+
+<!-- NAMA 17 -->
+<div class="nama-number-block">
+  <div class="nama-num">१७</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">वदनस्मरमाङ्गल्यगृहतोरणचिल्लिका</span>
+    <span class="nama-iast-inline">Vadana-smara-māṅgalya-gṛha-toraṇa-cillikā</span>
+    <span class="nama-meaning-inline">She whose eyebrows are the archways of the temple of love which is her face</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>Eyebrows as Sacred Architecture · Kāma's Temple</summary>
+      <p><em>Vadana</em> = face. <em>Smara</em> = Kāma (god of love; from <em>smṛ</em> = to remember — love is the great reminder of union). <em>Māṅgalya-gṛha</em> = auspicious house/temple. <em>Toraṇa</em> = decorated archway/gateway (the ornamental portal of a Hindu temple). <em>Cillikā</em> = eyebrows. Her face is Kāma's own auspicious palace; her eyebrows are its arching gateway — the entrance through which all devotion enters. The image subtly mirrors the structure of a Śrī Cakra's outer gateway: approaching the central bindu (the Goddess's eyes) one must first pass through the outer toraṇa (the eyebrows).</p>
+    </details>
+  </div>
+</div>
+
+<!-- NAMAS 18–22: condensed -->
+<div class="nama-number-block">
+  <div class="nama-num">१८</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">वक्त्रलक्ष्मीपरीवाहचलन्मीनाभलोचना</span>
+    <span class="nama-iast-inline">Vaktra-Lakṣmī-parīvāha-calan-mīnābha-locanā</span>
+    <span class="nama-meaning-inline">She whose eyes have the luster of fish moving in the stream of beauty flowing from Her face</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>Fish-Eyes · The River of Lakṣmī</summary>
+      <p><em>Vaktra-Lakṣmī</em> = the beauty/Lakṣmī of her face. <em>Parīvāha</em> = the flow, the overflow (as a river overflows). <em>Calan</em> = moving. <em>Mīna-ābha</em> = fish-lustrous. <em>Locana</em> = eyes. Her face streams with such overwhelming beauty that it forms a river; in this river of facial beauty, her eyes move like two luminous fish. This image connects back to Mīnākṣī (<em>Śrī Mīnākṣī</em> of the maṅgalācaraṇa) and grounds the cosmic Goddess in the beloved local form worshipped at Madurai. Bhāskararāya: "The mīna (fish) symbol recurs because the Goddess's gaze encompasses both the visible (right eye = sun = day = Piṅgalā) and the invisible (left eye = moon = night = Iḍā), swimming effortlessly through both realms."</p>
+    </details>
+  </div>
+</div>
+
+<!-- NAMAS 19–22 grouped -->
+<div class="info-box">
+  <div class="info-box-title">Nāmas 19–22 · The Nose, Nose-Ornament, and Ear-Ornaments</div>
+
+  <div style="margin-bottom:1rem">
+    <strong>19. नवचम्पकपुष्पाभनासादण्डविराजिता</strong> · <em>Navacampaka-puṣpābha-nāsādaṇḍa-virājitā</em> — She whose nose is as beautiful as a newly blooming campaka flower. The <em>nāsādaṇḍa</em> (nose-rod/bridge) is straight, thin, and golden — the campaka flower's stem is the precise classical comparison. Neurologically, the nose is the only sense organ with direct access to the limbic system (olfactory nerve → olfactory bulb → amygdala, bypassing thalamus). Its beauty is inseparable from its function as the portal of prāṇa.
+  </div>
+
+  <div style="margin-bottom:1rem">
+    <strong>20. ताराकान्तितिरस्कारिनासाभरणभासुरा</strong> · <em>Tārākānti-tiraskāri-nāsābharaṇa-bhāsurā</em> — She who shines with a nose-ornament that excels the luster of a star. The nose ring or stud (<em>nāsābharaṇa</em>) is a critical element of married status in South Indian Śākta tradition and a mark of the Goddess's sovereignty as Kāmeśvara's consort. It "surpasses a star" (<em>tārā-kānti-tiraskārī</em>) — meaning its gem outshines even celestial lights.
+  </div>
+
+  <div style="margin-bottom:1rem">
+    <strong>21. कदम्बमञ्जरीक्लृप्तकर्णपूरमनोहरा</strong> · <em>Kadamba-mañjarī-kḷpta-karṇapūra-manoharā</em> — She who is captivating, wearing kadamba flower-clusters as ear-ornaments. The kadamba (<em>Neolamarckia cadamba</em>) is Kṛṣṇa's sacred tree — its spherical yellow-white fragrant flowers are used as ear ornaments in the Goddess's image. Bhāskararāya: "The kadamba at the ears invokes the sacred auditory sense — the Goddess hears the devotee's prayer through these flower-receivers."
+  </div>
+
+  <div>
+    <strong>22. ताटङ्कयुगलीभूततपनोडुपमण्डला</strong> · <em>Tāṭaṅka-yugalī-bhūta-tapanoḍupa-maṇḍalā</em> — She who wears the sun and moon as a pair of large earrings. This nāma explicitly identifies the Goddess's ears with cosmic astronomy: the two great luminaries become her personal ornaments. Right ear = Sun (Sūrya = Piṅgalā nāḍī = active-outward consciousness); Left ear = Moon (Candra = Iḍā nāḍī = receptive-inward consciousness). Her wearing of both confirms her nature as <em>Mithuna-svarūpā</em> — the union of solar and lunar principles.
+  </div>
+</div>
+
+<!-- NAMAS 23–29 -->
+<div class="nama-number-block">
+  <div class="nama-num">२३</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">पद्मरागशिलादर्शपरिभाविकपोलभूः</span>
+    <span class="nama-iast-inline">Padmarāga-śilā-darśa-paribhāvika-polabhūḥ</span>
+    <span class="nama-meaning-inline">She whose cheeks excel mirrors made of rubies in their beauty</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>Ruby Mirrors · Padmarāga · Cheeks as Reflective Consciousness</summary>
+      <p><em>Padmarāga</em> = ruby (lit. "lotus-red" — the deep red corundum gem). <em>Śilā-darśa</em> = mirror of stone (polished gemstone used as mirror in ancient India). <em>Paribhāvika</em> = excelling, surpassing. <em>Polabhūḥ</em> = the cheek-surface. The cheeks surpass even ruby mirrors — the most brilliant reflecting surfaces known. In the Tantric tradition, the cheek reflects everything in the Goddess's immediate presence back to the perceiver — her face is an infinite mirror in which the devotee sees his own true nature. The ruby's color (deep red, ~694nm) corresponds to the laser wavelength — a pure, coherent light — suggesting the Goddess's cheeks radiate a pure, focused awareness-light.</p>
+    </details>
+  </div>
+</div>
+
+<div class="nama-number-block">
+  <div class="nama-num">२४</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">नवविद्रुमबिम्बश्रीन्यक्कारिरदनच्छदा</span>
+    <span class="nama-iast-inline">Nava-vidruma-bimba-śrī-nyakkāri-radana-cchadā</span>
+    <span class="nama-meaning-inline">She whose lips excel freshly cut coral and the bimba fruit in splendor</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>The Lips · Vāk Śakti · Mantra as Lip-Sound</summary>
+      <p><em>Nava</em> = fresh, new. <em>Vidruma</em> = coral. <em>Bimba</em> = the bimba fruit (<em>Coccinia grandis</em> — small red berry, deeply red, the classical comparison for red lips in Sanskrit poetry). <em>Śrī-nyakkāri</em> = excelling in beauty. <em>Radana-cchada</em> = lips (lit. "coverings of the teeth"). The lips are the portal of Vāk — speech, mantra, the Goddess's primary creative power. In the Mālinī tradition, the 51 Sanskrit letters are distributed across the body, and the lips are specifically the location of <em>Pa</em> and <em>Pha</em> (labial consonants) — the breath-consonants of the heart's emanation. The Goddess's lips — redder than coral — are the source of the Veda.</p>
+    </details>
+  </div>
+</div>
+
+<div class="nama-number-block">
+  <div class="nama-num">२५</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">शुद्धविद्याङ्कुराकारद्विजपङ्क्तिद्वयोज्ज्वला</span>
+    <span class="nama-iast-inline">Śuddha-vidyāṅkurākāra-dvija-paṅkti-dvayojjvalā</span>
+    <span class="nama-meaning-inline">She who has radiant teeth which resemble the buds of pure knowledge</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>Teeth as Śuddha Vidyā Buds · Epistemological Iconography</summary>
+      <p><em>Śuddha vidyā</em> = pure knowledge (the fifth tattva in the Śaiva-Śākta system, above Māyā and below Parāśakti — the first principle of clarity, where the subject-object duality is not yet fully differentiated). <em>Aṅkura</em> = sprout, bud. <em>Dvija</em> = twice-born (here: teeth, which appear twice — milk teeth and permanent teeth). <em>Paṅkti-dvaya</em> = two rows. Her teeth are as white, perfect, and brilliantly ordered as new sprouts of Śuddha Vidyā itself — each tooth a unit of pure knowledge arising within the Goddess's smile. Bhāskararāya: "This is the most philosophically precise tooth-description in Sanskrit literature. The teeth do not merely resemble buds — they <em>are</em> Śuddha Vidyā, the level of consciousness at which the universe begins to be articulated within pure awareness."</p>
+    </details>
+  </div>
+</div>
+
+<div class="nama-number-block">
+  <div class="nama-num">२६</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">कर्पूरवीटिकामोदसमाकर्षिदिगन्तरा</span>
+    <span class="nama-iast-inline">Karpūra-vīṭikā-moda-samākarṣi-digantarā</span>
+    <span class="nama-meaning-inline">She who enjoys a camphor-laden betel roll whose fragrance attracts people from all directions</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>The Betel Roll · Sacred Fragrance · Omnidirectional Grace</summary>
+      <p><em>Karpūra</em> = camphor (<em>Cinnamomum camphora</em> — intensely volatile, cold-burning, purifying, sacred in all Indian ritual traditions). <em>Vīṭikā</em> = betel leaf roll (tambūla — pan — the areca nut wrapped in betel leaf with lime and various spices, the ritual hospitality offering). <em>Moda</em> = fragrance, delight. <em>Samākarṣi</em> = attracting, drawing toward. <em>Digantara</em> = the space between directions = all of space. The camphor fragrance from the Goddess's betel roll reaches in all directions simultaneously — indicating her <em>sarva-vyāpitva</em> (omnipresence). Whatever direction one approaches from, her grace draws one in. <strong>Neurochemical:</strong> Camphor vapor activates TRPV3 cold receptors in the nasal mucosa, producing an immediate calming, clarifying effect on the nervous system. This is the physiological basis of its purifying role in all Hindu pūjā.</p>
+    </details>
+  </div>
+</div>
+
+<div class="nama-number-block">
+  <div class="nama-num">२७</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">निजसल्लापमाधुर्यविनिर्भर्त्सितकच्छपी</span>
+    <span class="nama-iast-inline">Nija-sallāpa-mādhurya-vinirbhartsita-kacchabī</span>
+    <span class="nama-meaning-inline">She who excels even the vīṇā of Sarasvatī in the sweetness of Her speech</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>Speech Surpassing Music · Parā Vāk · Nāda Brahman</summary>
+      <p><em>Sallāpa</em> = sweet conversation, the Goddess's speech. <em>Mādhurya</em> = sweetness (from <em>madhura</em> = honey-sweet). <em>Vinirbhartsita</em> = that which has been surpassed/shamed. <em>Kacchapī</em> = Sarasvatī's vīṇā (lit. "turtle-backed" — the resonating body of Sarasvatī's lute resembles a turtle-shell). The Goddess's natural conversation is sweeter than Sarasvatī's musical instrument — making her the source from which music itself derives. Bhāskararāya maps the hierarchy: kacchapī-vīṇā (musical sound) &lt; Sarasvatī's singing &lt; the Goddess's speech &lt; the Goddess's laughter &lt; the Praṇava Oṃ. Each level of sound draws closer to the <em>Nāda Brahman</em>.</p>
+    </details>
+  </div>
+</div>
+
+<div class="nama-number-block">
+  <div class="nama-num">२८</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">मन्दस्मितप्रभापूरमज्जत्कामेशमानसा</span>
+    <span class="nama-iast-inline">Manda-smita-prabhā-pūra-majjat-Kāmeśa-mānasā</span>
+    <span class="nama-meaning-inline">She who submerges even the mind of Kāmeśa in the radiance of Her smile</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>The Smile That Submerges Śiva · Sakti's Supremacy · Comparative Theology</summary>
+      <p><em>Manda-smita</em> = the gentle smile (<em>smita</em> = the mildest category of smile in Sanskrit dramaturgy, where only a slight opening of the lips and brightening of the eyes occur). <em>Prabhā-pūra</em> = flood of radiance. <em>Majjat</em> = submerged, drowned. <em>Kāmeśa</em> = Lord of Kāma = Śiva. Even Śiva — who burned Kāma with a glance from his third eye — is submerged in the radiance of the Goddess's <em>gentle smile</em>. This is the Śākta statement of ontological supremacy: the Goddess does not overpower Śiva through violence or superior force, but through the overflowing beauty of her own being. Her smile is the proof that she is the Parā-Śakti who exceeds even the Destroyer. Śaṅkara's parallel: it is not that the Goddess transcends Brahman — it is that Brahman's own Ānanda (bliss) is her smile.</p>
+    </details>
+  </div>
+</div>
+
+<div class="nama-number-block">
+  <div class="nama-num">२९</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">अनाकलितसादृश्यचिबुकश्रीविराजिता</span>
+    <span class="nama-iast-inline">Anākalita-sādṛśya-cibuka-śrī-virājitā</span>
+    <span class="nama-meaning-inline">She whose chin cannot be compared to anything — beyond all comparison</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>Incomparable Chin · The Limit of Poetic Language · Via Negativa</summary>
+      <p><em>Anākalita</em> = not grasped, not perceived, without measure. <em>Sādṛśya</em> = resemblance, comparison. <em>Cibuka</em> = chin. <em>Śrī-virājitā</em> = resplendent with beauty. Throughout nāmas 15–28, the poet found brilliant comparisons for each feature of the Goddess's face — moon, fish, arches, coral, rubies, camphor. At the chin, the system of comparison reaches its limit: the chin is beyond all comparison. This is a deliberate rhetorical and theological move — it enacts what Bhāskararāya calls the <em>nirukta-sīmā</em> (limit of etymology): the Goddess ultimately exceeds all linguistic capture. The chin — the lowest part of the face, below all the organs of cognition — is where language's attempt to grasp divine beauty finally gives up. This mirrors the Māṇḍūkya Upaniṣad's <em>neti neti</em>: "not this, not this" — arriving at the incomparable.</p>
+    </details>
+  </div>
+</div>
+
+<div class="page-divider">✦ · ✦ · ✦</div>
+
+<!-- ═══════════ NĀMAS 30–42: NECK TO ANKLES ═══════════ -->
+<div class="chapter-header" id="sec-namas-30">
+  <div class="chapter-number">Section IV · Nāmas 30–42</div>
+  <div class="chapter-title-sa">कन्धरादगूढगुल्फपर्यन्तम् — दिव्यशरीरवर्णनम्</div>
+  <div class="chapter-title-en">From Neck to Hidden Ankles: The Description of the Divine Body</div>
+</div>
+
+<p>Nāmas 30–42 descend from the neck through arms, breasts, waist, hips, thighs, knees, calves, and finally arrive at the <em>gūḍha-gulphā</em> — the hidden ankles. Each nāma is a dhāraṇā point in the downward visualization, mapping the Goddess's body onto the practitioner's own through the Mātṛkā Nyāsa technique.</p>
+
+<!-- NAMAS 30-31 -->
+<div class="nama-number-block">
+  <div class="nama-num">३०</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">कामेशबद्धमाङ्गल्यसूत्रशोभितकन्धरा</span>
+    <span class="nama-iast-inline">Kāmeśa-baddha-māṅgalya-sūtra-śobhita-kandharā</span>
+    <span class="nama-meaning-inline">She whose neck is adorned with the marriage thread tied by Kāmeśa</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>The Maṅgalasūtra · Sacred Marriage · Kāmeśvara as Śiva</summary>
+      <p><em>Kāmeśa</em> = Kāmeśvara = Śiva in his aspect as Lord of Kāma (Desire). <em>Baddha</em> = tied. <em>Māṅgalya-sūtra</em> = the auspicious thread tied around the wife's neck at marriage (the South Indian equivalent of the wedding ring, made of gold and black beads). <em>Kandharā</em> = neck. This nāma is theologically crucial: it establishes the Goddess's cosmic status as <em>Kāmeśvara's wife</em> — not subordinate to him but in the supreme partnership (<em>mithuna</em>) that is the generative structure of the universe. Bhāskararāya: "The māṅgalya-sūtra at the Viśuddha cakra (throat) represents the binding of the Śiva-Śakti union at the level of speech — creation itself is their marriage vow. Every mantra uttered is a renewal of this cosmic wedding."</p>
+    </details>
+  </div>
+</div>
+
+<div class="nama-number-block">
+  <div class="nama-num">३१</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">कनकाङ्गदकेयूरकमनीयभुजान्विता</span>
+    <span class="nama-iast-inline">Kanakāṅgada-keyūra-kamanīya-bhujānvitā</span>
+    <span class="nama-meaning-inline">She whose arms are beautifully adorned with golden armlets</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>Armlets and Cakra-Śakti · Āyudhas as Vibratory Centers</summary>
+      <p><em>Kanaka</em> = gold. <em>Aṅgada</em> = upper arm band. <em>Keyūra</em> = armlet above the elbow. <em>Kamanīya</em> = beautiful, desirable. The arms (bāhus) in Tantra are the most externally active limbs — they express the Goddess's kriyā-śakti. The golden armlets at specific points of the arm (above elbow, wrist) mark the energy-constriction points where the nāḍīs converge. Gold in particular is linked to Sūrya (solar consciousness) — the golden armlets infuse the active-creative arms with solar-Piṅgalā energy.</p>
+    </details>
+  </div>
+</div>
+
+<!-- NAMAS 32-36 condensed -->
+<div class="info-box">
+  <div class="info-box-title">Nāmas 32–36 · The Sacred Geometry of the Goddess's Torso</div>
+
+  <p><strong>32. रत्नग्रैवेयचिन्ताकलोलमुक्ताफलान्विता</strong> — Gem-studded necklace with pearl locket. The <em>grīvā</em> (neck) holds the Viśuddha cakra; the gem-necklace maps the 16 vowels of Sanskrit distributed around the throat chakra's sixteen petals. The pearl (<em>muktā</em>) at center is the bindu of pure Śabda-Brahman.</p>
+
+  <p><strong>33. कामेश्वरप्रेमरत्नमणिप्रतिपणस्तनी</strong> — <em>She who gives Her breasts to Kāmeśvara in exchange for the gem of love.</em> One of the most intimate theological statements in the Sahasranāma: the Goddess's breasts (seat of nourishment, the Anāhata-principle) are given in <em>pratipana</em> (exchange, commerce) for Śiva's <em>prema-ratna</em> (gem of love). Creation is a love-exchange, not a one-directional emission. Bhāskararāya: "The universe is their mutual gift."</p>
+
+  <p><strong>34. नाभ्यालवालरोमालिलताफलकुचद्वयी</strong> — <em>She whose breasts are the fruits on the vine that springs from her navel-well.</em> The navel (nābhi) is the Maṇipūra cakra — the solar plexus / fire center. From it rises a hairline (<em>romalī-latā</em> = hair-creeper) like a vine, and at the vine's apex are the breasts as its fruits. The image encodes the energetic direction: Kuṇḍalinī rises from Maṇipūra toward the Anāhata along the Suṣumnā, manifesting the heart's opening as the natural "fruiting" of the solar-fire's ascent.</p>
+
+  <p><strong>35. लक्ष्यरोमलताधारतासमुन्नेयमध्यमा</strong> — <em>Her waist can only be inferred from the fact that the hair-vine springs from it.</em> The waist is so impossibly slender that it is not directly visible — it is logically inferred (<em>samunneya</em> = to be understood through inference). This is a philosophical joke about the limits of direct perception: even the Goddess's body requires <em>anumāna</em> (inference) at a certain point — mirroring the epistemological point that Brahman itself cannot be directly perceived but is inferred through its effects.</p>
+
+  <p><strong>36. स्तनभारदलन्मध्यपट्टबन्धवलित्रया</strong> — <em>The three folds of her abdomen form a belt to protect the waist from breaking under the weight of her breasts.</em> The three abdominal folds (<em>vali-traya</em>) are the three <em>granthis</em> (knots) of the Suṣumnā — Brahmā-granthi, Viṣṇu-granthi, Rudra-granthi — that the Kuṇḍalinī must pierce during its ascent. Described here as gentle, beautiful folds of flesh on the divine body, they are simultaneously the anatomical-aesthetic and yogic-topological map of the same reality.</p>
+</div>
+
+<div class="nama-number-block">
+  <div class="nama-num">३७</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">अरुणारुणकौसुम्भवस्त्रभास्वत्कटीतटी</span>
+    <span class="nama-iast-inline">Aruṇāruṇa-kausumbha-vastra-bhāsvat-kaṭītaṭī</span>
+    <span class="nama-meaning-inline">She whose hips are adorned with a garment as red as the rising sun, dyed with safflower</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>The Kausumbha Garment · Svādhiṣṭhāna · Textile-Cakra Mapping</summary>
+      <p><em>Aruṇāruṇa</em> = doubled aruṇa (the most intensely red of reds — deep dawn-crimson). <em>Kausumbha</em> = safflower dye (<em>Carthamus tinctorius</em> — produces brilliant orange-red, the color of the rising sun's initial rays, distinct from the deeper sindūra-red). <em>Kaṭī-taṭī</em> = the banks/shores of the hips (a beautiful image: hips as river-banks, the garment flowing like river water). The hip-region in the Tantric body-mapping corresponds to the Svādhiṣṭhāna cakra (second chakra — water element, creative/sexual energy). The red garment blazing at this location is the visual encoding of the Svādhiṣṭhāna's fire activating the water element — the specific alchemical combination that drives creative and generative power.</p>
+    </details>
+  </div>
+</div>
+
+<div class="nama-number-block">
+  <div class="nama-num">३८</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">रत्नकिङ्किणिकारम्यरशनादामभूषिता</span>
+    <span class="nama-iast-inline">Ratna-kiṅkiṇikā-ramya-raśanā-dāma-bhūṣitā</span>
+    <span class="nama-meaning-inline">She who is adorned with a girdle decorated with gem-studded bells</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>The Girdle Bells · Nāda at the Maṇipūra · Sound Mapping</summary>
+      <p><em>Kiṅkiṇikā</em> = tiny bells (the word is onomatopoeic — <em>kiṅ-kiṅ</em> is the sound of tiny bells). <em>Raśanā</em> = girdle/waist-ornament. <em>Dāma</em> = chain/string. The gem-studded bells at the waist produce <em>kiṅkiṇī-nāda</em> — the sound of tiny bells — at the Maṇipūra level. In Nāda Yoga, the kiṅkiṇī-nāda is classified as one of the ten internal sounds (daśa-nāda) heard in advanced meditation, corresponding to the awakening of the navel center. The Goddess wears externally what the advanced practitioner hears internally — the ornament IS the meditation-sound.</p>
+    </details>
+  </div>
+</div>
+
+<div class="nama-number-block">
+  <div class="nama-num">३९</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">कामेशज्ञातसौभाग्यमार्दवोरुद्वयान्विता</span>
+    <span class="nama-iast-inline">Kāmeśa-jñāta-saubhāgya-mārdava-oru-dvayānvitā</span>
+    <span class="nama-meaning-inline">The beauty and softness of whose thighs are known only to Kāmeśvara</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>Sacred Privacy · The Guru-Disciple and Husband-Wife Parallels</summary>
+      <p><em>Jñāta</em> = known only to. <em>Saubhāgya</em> = auspicious beauty (the quality of being beloved and cherished). <em>Mārdava</em> = softness, tenderness. <em>Oru</em> = thigh. This nāma introduces the concept of <em>sacred inaccessibility</em>: not every aspect of the Goddess is available to all — some dimensions of her reality are known only to the one who has completely surrendered to her in the most intimate union. Kāmeśa's exclusive knowledge of her thighs represents the Guru-disciple transmission (<em>śaktipāta-dīkṣā</em>) that communicates what words and visualization cannot reach.</p>
+    </details>
+  </div>
+</div>
+
+<div class="nama-number-block">
+  <div class="nama-num">४०</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">माणिक्यमकुटाकारजानुद्वयविराजिता</span>
+    <span class="nama-iast-inline">Māṇikya-makuṭākāra-jānu-dvaya-virājitā</span>
+    <span class="nama-meaning-inline">She whose knees are like crowns shaped from the precious ruby māṇikya</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>Knees as Ruby Crowns · The Descent of Sovereignty</summary>
+      <p><em>Māṇikya</em> = ruby (the precious red gem that has appeared repeatedly — crown, cheeks, garlands — throughout the nāma sequence). <em>Makuṭa</em> = crown. The knees resemble crowned rubies — as if the sovereignty (<em>rājya</em>) that was concentrated in her crown (nāma 14) has descended all the way to her knees in its journey downward. The image is architecturally precise: the kneecap in profile, with its rounded form and slight ridge, does resemble a small crown. Bhāskararāya identifies this with the Śrī Cakra's descending āvaraṇas — the crown energy descends from the Sahasrāra to the lower cakras in exactly this progressive-downward manner.</p>
+    </details>
+  </div>
+</div>
+
+<div class="nama-number-block">
+  <div class="nama-num">४१</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">इन्द्रगोपपरिक्षिप्तस्मरतूणाभजङ्घिका</span>
+    <span class="nama-iast-inline">Indragopa-parikṣipta-smara-tūṇābha-jaṅghikā</span>
+    <span class="nama-meaning-inline">She whose calves gleam like the jewel-covered quiver of the God of Love</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>Indragopa Beetles · Calves as Kāma's Quiver · Natural History</summary>
+      <p><em>Indragopa</em> = a brilliant scarlet velvet mite (<em>Trombidium</em> sp.) that appears on the earth in large numbers after the first monsoon rains — their red, jewel-like bodies appearing as if scattered gems. <em>Parikṣipta</em> = scattered around, studded with. <em>Smara-tūṇa</em> = the quiver of Kāma (which holds the five flower arrows). <em>Jaṅghikā</em> = calf of the leg. The calves of the Goddess shine like Kāma's quiver studded with Indragopa gems — the most unexpectedly precise image in the nāma sequence: actual monsoon insects become the ornament of the divine leg. This is the Lalitopākhyāna's characteristic move of finding the sacred within the most particular and local natural phenomenon.</p>
+    </details>
+  </div>
+</div>
+
+<div class="nama-number-block">
+  <div class="nama-num">४२</div>
+  <div class="nama-content">
+    <span class="nama-sa-inline">गूढगुल्फा</span>
+    <span class="nama-iast-inline">Gūḍha-gulphā</span>
+    <span class="nama-meaning-inline">She whose ankles are hidden</span>
+  </div>
+  <div class="nama-commentary">
+    <details>
+      <summary>The Hidden Ankles · Mystery at the Threshold · Mūlādhāra Approach</summary>
+      <p>After the extraordinary baroque elaboration of every part of the divine body — from the thousand-sun radiance of her origin to the monsoon-beetle luster of her calves — the nāma-sequence suddenly gives us the most minimal, mysterious description: <em>gūḍha-gulphā</em> — "hidden ankles." Just two words. No comparison, no elaboration, no precious stones. The ankles are hidden. Bhāskararāya: "The ankles are hidden because they mark the threshold between the Goddess's body (which has been fully described) and her contact with the ground — which is the earth (<em>pṛthivī</em>) itself. At the point where the divine form touches and is about to touch the earth, it becomes inaccessible to description — just as Brahman, at the point where it becomes the individual soul (<em>jīva</em>), becomes mysterious and apparently hidden." The hidden ankles are the <em>Mūlādhāra threshold</em> — the point of the Goddess's deepest descent into manifestation, the most sacred and the most concealed."</p>
+    </details>
+  </div>
+</div>
+
+<div class="page-divider">✦ · ✦ · ✦</div>
+
+<!-- ═══════════ SECTION: AGASTYA–HAYAGRĪVA DIALOGUE ═══════════ -->
+<div class="chapter-header" id="sec-dialogue">
+  <div class="chapter-number">Section V · Brahmāṇḍa Purāṇa, Uttarabhāga, Adhyāya 6</div>
+  <div class="chapter-title-sa">अगस्त्य-हयग्रीव-संवादः — शक्तिस्वरूपप्रश्नः</div>
+  <div class="chapter-title-en">The Agastya–Hayagrīva Dialogue: On the Nature of Śakti</div>
+</div>
+
+<p>The Lalitā Sahasranāma is embedded within a narrative frame of profound importance: the sage Agastya, seated at Kāñcīpuram, questions Hayagrīva — the horse-headed form of Viṣṇu — about the nature of the Goddess, her forms, and the cosmic principles she embodies. This sixth chapter opens that frame-narrative and reveals the metaphysical premises of the entire Sahasranāma.</p>
+
+<!-- DIALOGUE BLOCKS -->
+<div class="dialogue-block">
+  <div class="dialogue-speaker">Agastya — Verses 1–3</div>
+  <div class="dialogue-text">
+    <p>"O holy lord conversant with all religious activities, the most excellent one among those who know all logically-established doctrines (<em>siddhāntas</em>), seeing people like you is a contributory cause for the prosperity of the world."</p>
+    <p>"Mention in detail to us all these things: the manifestation of the great goddess, her other forms, and the most important of her sporting activities and pastimes (<em>krīḍā</em>)."</p>
+  </div>
+</div>
+
+<div class="nama-card">
+  <div class="nama-header">
+    <span class="nama-sa">अगस्त्य-हयानन-संवादः</span>
+    <span class="nama-iast">The Frame: Why Agastya? Why Hayagrīva?</span>
+    <span class="nama-meaning-tag">Narrative Theology</span>
+  </div>
+  <div class="analysis-layer">
+    <div class="layer-label">Agastya's Role</div>
+    <div class="layer-text">Agastya (<em>Agastya muni</em>) is the sage credited with bringing the Vedas and Śaiva-Śākta tradition from the North (Himalaya) to the South (Dravidian regions). He is the founding teacher of Tamil grammar (<em>Agattiyam</em>) and the foremost advocate of the Southern (<em>Dakṣiṇa</em>) transmission. His asking the question here at Kāñcīpuram — the premier Śākta pīṭha of South India — is a historical-theological statement: the Sahasranāma belongs specifically to the Southern Śrī Vidyā transmission, and Agastya is its human origin-point in this particular parampara.</div>
+  </div>
+  <div class="analysis-layer">
+    <div class="layer-label">Hayagrīva's Role</div>
+    <div class="layer-text">Hayagrīva (<em>Haya</em> = horse; <em>grīva</em> = neck/head) is Viṣṇu with a horse's head — the form he assumed to retrieve the Vedas from the demons Madhu and Kaiṭabha who had stolen them. His <em>DHA-svara</em> (the horse-neigh that corresponds to the Dhaivata note — sixth degree, Ājñā cakra) is the specific frequency of the transmission. Bhāskararāya in the Varivasya Rahasya: "Hayagrīva's horse-head is significant: the horse's neigh (<em>heṣā</em>) produces the Ha-kāra and the DHA-frequency simultaneously — confirming that he is the embodiment of the sixth svara's wisdom, the Ājñā-level teacher who opens the third eye of the student." The choice of Hayagrīva (rather than, say, Śiva or Nārada) as the teacher of the Sahasranāma locates the teaching in the space of Ājñā-activation — it is a teaching for the advanced practitioner whose third eye is already open.</div>
+  </div>
+</div>
+
+<div class="dialogue-block">
+  <div class="dialogue-speaker">Hayagrīva — Verses 4–6: The Nature of the Goddess</div>
+  <div class="dialogue-text">
+    <p><span class="verse-num">4–5.</span> "The Goddess is beginningless (<em>anādi</em>). She is the support of everything (<em>sarva-ādhārā</em>). Sat and Asat (Being and Non-Being) are her forms. She can be perceived only through meditation (<em>dhyāna-gamyā</em>). Meditation and vidyās are her limbs (<em>aṅgas</em>). The Heart is her base (<em>hṛdaya</em> = her ground). She becomes manifest on attaining the oneness of souls on the ground of continued performance of holy rites."</p>
+    <p><span class="verse-num">6.</span> "At the outset, Śakti manifested herself through the profound meditation of god Brahmā. That Śakti is well-known by the name of Prakṛti. She is the bestower of Siddhi desired by the Devas."</p>
+  </div>
+</div>
+
+<div class="nama-card">
+  <div class="nama-header">
+    <span class="nama-sa">अनादि · सर्वाधारा · सदसद्रूपा</span>
+    <span class="nama-iast">Anādi · Sarvādhārā · Sadasad-rūpā</span>
+    <span class="nama-meaning-tag">Three Primary Attributes</span>
+  </div>
+  <div class="analysis-layer">
+    <div class="layer-label">Anādi — Beginningless</div>
+    <div class="layer-text">The first attribute Hayagrīva assigns is <em>anāditva</em> — beginninglessness. This is not a negative attribute (absence of beginning) but a positive ontological claim: the Goddess does not arise from a prior cause; she is the self-originated, self-illuminous reality (<em>svayam-prakāśa</em>). In Advaita terms: Brahman is <em>anādi</em> because causality itself is within Brahman's apparent play — there is no "before" Brahman. The Śākta parallel: Māyā is also <em>anādi</em> in the Advaita system (beginningless ignorance), but here Māyā is identified with the Goddess herself — who is therefore both the beginningless Mystery and the beginningless Truth.</div>
+  </div>
+  <div class="analysis-layer">
+    <div class="layer-label">Sarvādhārā — Support of All</div>
+    <div class="layer-text"><em>Ādhāra</em> = support, base, ground (from <em>ā + dhṛ</em> = to hold from below). Everything — every god, every world, every soul — rests upon her. This is the precise inverse of how the Goddess is sometimes represented as riding a lion or standing on a corpse: she is not supported by the universe — the universe is supported by her. The Taittirīya Upaniṣad's definition of Brahman as <em>pratiṣṭhā</em> (the ground/foundation) is here applied to Lalitā without hesitation.</div>
+  </div>
+  <div class="analysis-layer">
+    <div class="layer-label">Sadasad-rūpā — Form of Being and Non-Being</div>
+    <div class="layer-text">This is the most philosophically radical attribute: she is both <em>sat</em> (being, existence, the real) AND <em>asat</em> (non-being, non-existence, the apparent unreal). This transcends the Advaitic position (which assigns only sat to Brahman and asat to Māyā). The Trika Śaiva-Śākta synthesis: the Goddess as Vimarśa (self-reflective awareness) encompasses both the existent and the non-existent — she is the awareness that holds both the Real and the Appearance simultaneously without confusion and without exclusion. This is the philosophical ground for <em>both</em> jñāna-mārga (the path through sat alone) and <em>bhakti-mārga</em> (which operates within the apparent asat of the world).</div>
+  </div>
+</div>
+
+<div class="dialogue-block">
+  <div class="dialogue-speaker">Hayagrīva — Verses 7–9: Mohinī and the Second Manifestation</div>
+  <div class="dialogue-text">
+    <p><span class="verse-num">7–9.</span> "The second form appeared when the churning for the sake of Nectar was being carried out. That form fascinated Śarva (Śiva). It cannot be comprehended by the mind or expressed through words. On seeing it, even Īśa (god Śiva) became charmed and enchanted although he is omniscient. When prohibited by her, he left off Pārvatī all of a sudden and indulged in sexual intercourse with her. He begot of her the son Śāstā, the suppressor of Asuras."</p>
+  </div>
+</div>
+
+<div class="nama-card">
+  <div class="nama-header">
+    <span class="nama-sa">मोहिनी-विभव</span>
+    <span class="nama-iast">The Mohinī Episode: Theology of Divine Eros</span>
+    <span class="nama-meaning-tag">Comparative Theology</span>
+  </div>
+  <div class="analysis-layer">
+    <div class="layer-label">Why This Episode is Here</div>
+    <div class="layer-text">The Mohinī-Śiva union and the birth of Śāstā (Ayyappa) is one of the most theologically complex episodes in Purāṇic literature. It appears here in the Lalitopākhyāna immediately after establishing the Goddess's metaphysical primacy because it demonstrates a crucial Śākta position: even Śiva's famous absolute <em>vairāgya</em> (dispassion — the quality that allowed him to burn Kāma without hesitation) does not protect him from the Goddess's Mohinī-power. The Mohinī-form of the Goddess is the <em>Māyā Śakti</em> that transcends even the highest masculine transcendence.</div>
+  </div>
+  <div class="analysis-layer">
+    <div class="layer-label">Bhāskararāya's Reading</div>
+    <div class="layer-text">Bhāskararāya does not treat this as an embarrassment or a lapse on Śiva's part. He reads it as a <em>līlā</em> — a deliberate cosmic play initiated by the Goddess for a specific purpose: to beget Śāstā (Ayyappa), the deity who would protect the universe from the Asura Mahiṣī. The apparent violation of dharma (Śiva leaving Pārvatī) is recontextualized as a supradharmic act — the Goddess's will operating above and through the conventional moral order for a cosmic purpose. This is a foreshadowing of the theological question that occupies the rest of this chapter: the relationship between violence, dharma, and divine will.</div>
+  </div>
+  <div class="analysis-layer">
+    <div class="layer-label">Śāstā / Ayyappa — The Son of Śiva and Mohinī</div>
+    <div class="layer-text">Śāstā (<em>the Ruler</em>) is worshipped primarily in Kerala as Ayyappan (Sabarimala). His parentage — Śiva (pure consciousness, Puruṣa) and Mohinī (the Goddess's enchanting form, Prakṛti) — makes him the embodiment of the union of the transcendent and immanent. His primary role is "suppressor of Asuras" (<em>asura-nigraha</em>) — specifically the defeat of Mahiṣī (the buffalo-demoness), connecting him directly to the Devī-Māhātmya tradition in which the Goddess herself defeats Mahiṣāsura. Father and child thus share the same mission.</div>
+  </div>
+</div>
+
+<div class="page-divider">✦ · ✦ · ✦</div>
+
+<!-- ═══════════ SECTION: KARMA & VIOLENCE ═══════════ -->
+<div class="chapter-header" id="sec-karma">
+  <div class="chapter-number">Section VI · Adhyāya 6, Verses 35–58</div>
+  <div class="chapter-title-sa">कर्मविचारः — हिंसाधर्मशास्त्रम्</div>
+  <div class="chapter-title-en">The Nature of Karma, Action, and the Ethics of Violence</div>
+</div>
+
+<p>After the Mohinī episode raises the question of transgression and divine purpose, the Lalitopākhyāna's sixth chapter turns to a systematic examination of karma and the ethics of violence through the frame of the Durvāsas-Indra episode. This is one of the most sophisticated sections of Purāṇic karma-mīmāṃsā (philosophical analysis of action and consequence) in the entire corpus.</p>
+
+<div class="section-intro">
+<strong>The Durvāsas Frame:</strong> Knowing Indra had become arrogant, Śiva sends the irascible sage Durvāsas to him in the guise of an ascetic. A Vidyādhara woman offers Durvāsas a garland given to her by the Goddess. Durvāsas offers it to Indra, who places it on his elephant, which throws it to the ground. Durvāsas curses Indra: all the three worlds shall lose their prosperity. Indra's subsequent fall, consultation with Bṛhaspati, and Bṛhaspati's teaching on karma and violence form the kernel of this section.
+</div>
+
+<div class="dialogue-block">
+  <div class="dialogue-speaker">Bṛhaspati to Indra — Verses 35–50</div>
+  <div class="dialogue-text">
+    <p><span class="verse-num">35.</span> "No action committed by man can perish even in a hundred crores of Kalpas unless atonement is performed or the result is experienced."</p>
+    <p><span class="verse-num">37.</span> "Five types of actions committed by a king constitute a sin: killing, stealing, drinking, sexual intercourse with other women, and [harsh speech]."</p>
+    <p><span class="verse-num">46.</span> "If a person kills a Brāhmaṇa or a Kṣatriya or a Vaiśya or a cow or a horse or anything in case he or it were to attack him with an intention of killing him, he is not affected by its sinful effects."</p>
+    <p><span class="verse-num">50.</span> "For the sake of gods and Brāhmaṇas, the king shall always kill lions, tigers and other animals that cause harm to the people."</p>
+  </div>
+</div>
+
+<div class="nama-card">
+  <div class="nama-header">
+    <span class="nama-sa">कर्माविनाशः — दण्डशास्त्रम्</span>
+    <span class="nama-iast">The Indestructibility of Karma · Graduated Penances</span>
+    <span class="nama-meaning-tag">Dharmaśāstra</span>
+  </div>
+  <div class="analysis-layer">
+    <div class="layer-label">Verse 35: The Central Karmic Principle</div>
+    <div class="layer-text">Bṛhaspati's opening statement — that no karma perishes without either atonement (<em>prāyaścitta</em>) or experience (<em>bhoga</em>) — is the foundational principle of the Indian karmic framework. It is important to note what this principle does NOT say: it does not say karma is unchangeable. It says karma must be either worked through consciously (prāyaścitta) or lived out experientially (bhoga). The Śākta addition to this framework: the Goddess's grace (<em>anugraha</em>) constitutes a third path — neither atonement by one's own effort nor mechanical experience, but the dissolution of karma through surrender to the Goddess. This is implied rather than stated here, but becomes the theological resolution of the Durvāsas episode: Indra eventually receives grace, not through his own prāyaścitta but through the cosmic churning that produces Amṛta — itself a Śākta event.</div>
+  </div>
+  <div class="analysis-layer">
+    <div class="layer-label">Graduated Sin-Values (Verses 38–44): A Note on Context</div>
+    <div class="layer-text">The graduated system of sin-values in verses 38–44 reflects the Dharmaśāstra tradition's hierarchical social framework — a value system rooted in the varṇa structure of ancient Indian society. Modern readers will find this framework deeply problematic by contemporary ethical standards, as it explicitly places different values on human lives based on caste and social category. It is essential to read these verses as historically and sociologically situated texts rather than eternal prescriptions. The Śākta tradition itself, particularly in the Tantric lineage, often transcended varnāśrama restrictions — Bhāskararāya himself taught across caste lines, and the Goddess's grace is explicitly described as available to all (<em>aśeṣa-jana-mohinī</em>, nāma 4 dhyāna verse — she enchants ALL people without remainder).</div>
+  </div>
+  <div class="analysis-layer">
+    <div class="layer-label">Verse 46: Self-Defense and the Right to Protection</div>
+    <div class="layer-text">The principle that defensive killing carries no karmic consequence (<em>na doṣaḥ</em>) is consistent across Dharmaśāstra (Manu, Yājñavalkya), the Mahābhārata, and the Bhagavad Gītā (Kṛṣṇa's instruction to Arjuna). What is philosophically significant here is the categorical equivalence of the argument: whether the attacker is a Brāhmaṇa, a Kṣatriya, a cow, or a horse — the right to self-defense is equal in all cases. This momentarily <em>equalizes</em> the graduated hierarchy of the preceding verses, suggesting a deeper principle operating beneath the caste framework.</div>
+  </div>
+</div>
+
+<div class="page-divider">✦ · ✦ · ✦</div>
+
+<!-- ═══════════ SECTION: ŚAKTI & SACRIFICE ═══════════ -->
+<div class="chapter-header" id="sec-shakti">
+  <div class="chapter-number">Section VII · Adhyāya 6, Verses 53–73</div>
+  <div class="chapter-title-sa">शक्तिः — महायज्ञः — पशुबलिः — अजपाजप</div>
+  <div class="chapter-title-en">Śakti's Primordial Creation, the Great Sacrifice, and Sacred Sound</div>
+</div>
+
+<div class="dialogue-block">
+  <div class="dialogue-speaker">Bṛhaspati — Verses 53–67: Māyā's Creation and the First Sacrifice</div>
+  <div class="dialogue-text">
+    <p><span class="verse-num">53–56.</span> "Formerly, goddess Māyā — with an inclination for enlivening the universe — created Devas, Asuras and human beings as well as fourteen types of animals for the sake of protecting them. After prescribing Yajñas and injunctions, she said: 'O men, perform sacrifices unto Devas with these animals in accordance with these injunctions. Those who make sacrificial offerings become sanctified. He who does not continue this regular system shall become indigent and worthy of being cast into hell.'"</p>
+    <p><span class="verse-num">59–60.</span> "There was a great sacrifice performed by Yuvanāśva. There was dispute among the Devas ('This is mine', 'This is mine'). Brahmā divided the animals and allotted them to Devas severally."</p>
+    <p><span class="verse-num">61–66.</span> "Thereat, the great Śakti assisted by groups of Bhūtas became furious. Then Brahmā said: 'Since you have appeared in front of me, I am contented. All activities auspicious and inauspicious have been created by you alone. Śrutis and Smṛtis have been composed by you alone. May all these animals allotted to the Devas be your own — let them be for the satisfaction of all beings.' After saying this, Brahmā vanished and performed Kratus in accordance with her injunction."</p>
+  </div>
+</div>
+
+<div class="nama-card">
+  <div class="nama-header">
+    <span class="nama-sa">शक्तिः सृष्टिहेतुः — यज्ञस्वामिनी</span>
+    <span class="nama-iast">Śakti as the Root of All Creation and the True Master of Sacrifice</span>
+    <span class="nama-meaning-tag">Cosmogony</span>
+  </div>
+  <div class="analysis-layer">
+    <div class="layer-label">Māyā as Cosmic Architect</div>
+    <div class="layer-text">Verses 53–56 present the Goddess (as Māyā) as the originator not just of the sacrificial system but of the beings for whom sacrifice was created. This is the Śākta inversion of the Vedic narrative: in the Ṛgveda, the universe emerges from the Puruṣa-sacrifice (Puruṣasūkta). Here, the sacrificial system itself is Śakti's creation — she created the animals <em>and</em> the rules for their use <em>and</em> the obligation to perform sacrifice. The entire sacrificial economy (which Vedic religion is built upon) is the Goddess's personal ordination, not a universal law independent of her.</div>
+  </div>
+  <div class="analysis-layer">
+    <div class="layer-label">Brahmā's Submission (Verses 61–66): The Supreme Statement</div>
+    <div class="layer-text">The climax of this section is Brahmā's statement to the furious Śakti: <em>"All activities auspicious and inauspicious have been created by you alone. Śrutis and Smṛtis have been composed by you alone."</em> This is one of the most radical theological statements in the entire Purāṇic corpus. The <em>Śrutis</em> (the Vedas — the highest authority in the Hindu tradition) and the <em>Smṛtis</em> (the secondary texts including Manu and the Dharmaśāstras) were not composed by human sages or by Brahmā — they were composed by the Goddess herself, through those human and divine vehicles. The authority of the Vedas is thus derived authority — derived from the Goddess. Bhāskararāya makes this the philosophical cornerstone of the Śrī Vidyā tradition: the Pañcadaśī mantra has higher authority than even the Ṛgveda because it is a more direct emanation of the Goddess's own self-expression.</div>
+  </div>
+  <div class="analysis-layer">
+    <div class="layer-label">The Mantra of Sacred Slaughter (Verses 69–70)</div>
+    <div class="layer-text">The text provides specific mantras to be uttered during sacrificial slaughter: <em>"This piṇḍa (mass) originates from Śiva. It has attained the state of Śiva. You are not aśiva (inauspicious). You are Sacchiva (good and auspicious). Rudra is superior to the universe, O animal, you are Rudra."</em> The theological operation here is precise: the animal is identified with Śiva-Rudra through mantra before being sacrificed — transforming the act from violence into a liberation. The animal's death is reframed as a return to its source. This is the Tantric understanding of <em>jīva-brahma-aikyam</em> (the identity of the individual soul with Brahman) applied to the sacrificial context: when the animal is identified with Śiva, its "death" is Śiva's self-recognition. Whether or not one accepts this theological framing, its logical structure — identifying the apparent victim with the ultimate reality to dissolve the victim-hood itself — is philosophically consistent with Advaita.</div>
+  </div>
+</div>
+
+<div class="info-box">
+  <div class="info-box-title">The Ajapā-Japa Connection: From Sacrifice to Breath-Mantra</div>
+  <p>The text's discussion of sacrifice (yajña) is not incidental to the Sahasranāma — it is its philosophical foundation. Every recitation of the Sahasranāma is itself a <em>vāk-yajña</em> (sacrifice through speech): the practitioner offers each nāma as an oblation into the cidagni-kuṇḍa of the Goddess's own consciousness-fire (nāma 4: <em>Cidagni-kuṇḍa-sambhūtā</em>).</p>
+  <p style="margin-top:.8rem">The animals offered in the outer sacrifice correspond to the inner sacrificial offerings of the Yoga tradition: the senses (five tanmātras = nāma 11), the mind (manas-bow = nāma 10), and rāga-krodha (nāmas 8–9) are the "animals" of the inner sacrifice — offered into the <em>jñāna-agni</em> (fire of knowledge) through dhyāna and japa.</p>
+  <p style="margin-top:.8rem">The ajapā-mantra — <em>So-Haṃ</em> / <em>Haṃ-Saḥ</em>, the breath-mantra that recites itself 21,600 times daily — is the perpetual sacrifice that runs beneath all formal ritual. As Bṛhaspati's principle states: "No action can perish without atonement or experience" — and the ajapā is the perpetual atonement that runs without break, the sacrifice that happens whether one is conscious of it or not. The Goddess herself is the ajapā: <em>nija-sallāpa-mādhurya</em> (nāma 27) — her own sweet speech is the ajapā whispered by existence to itself.</p>
+</div>
+
+<div class="page-divider">✦ · ✦ · ✦</div>
+
+<!-- CONCLUSION -->
+<div class="chapter-header">
+  <div class="chapter-number">Conclusion of Part II</div>
+  <div class="chapter-title-sa">उपसंहारः — द्वितीय भागः</div>
+  <div class="chapter-title-en">Summary and Transition to Part III</div>
+</div>
+
+<p>Part II has traversed four major movements of the Lalitopākhyāna:</p>
+
+<ol style="margin:1rem 0 1.5rem 1.5rem; line-height:2">
+  <li>The <strong>Fourth Dhyāna verse</strong> — the Japa-form of the Goddess, establishing the sonic-visual anchor for mantra repetition</li>
+  <li><strong>Nāmas 1–42</strong> — from the Goddess's cosmic origin in the Cidagni-kuṇḍa to the hidden ankles, covering her weaponry, her luminous sovereignty, her complete divine face, and her sacred body down to the threshold of the earth</li>
+  <li>The <strong>Agastya–Hayagrīva dialogue</strong> opening — establishing the metaphysical premises: the Goddess's beginninglessness, her Mohinī-power that transcends even Śiva's transcendence, and the cosmogonic framework</li>
+  <li>The <strong>karma-dharma-yajña sequence</strong> — placing the Sahasranāma within a complete sacrificial theology where the Goddess is the author of the Vedas, the owner of all sacrifice, and the ultimate sovereign of all karmic consequence</li>
+</ol>
+
+<p><strong>Part III</strong> will continue from nāma 43 (<em>Kūrmapṛṣṭhajayiṣṇu-prapadānvitā</em> — She whose upper feet are more beautiful than a tortoise's back) through approximately nāma 150, entering the description of the Goddess's feet, the Śrī Cakra city, and the detailed narrative of Lalitā's war against Bhaṇḍāsura that forms the central mythic drama of the Lalitopākhyāna.</p>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<div style="text-align:center; margin: 2rem auto; max-width:520px">
+  <div style="font-family:'Noto Serif Devanagari',serif;font-size:1.15rem;color:var(--crimson);line-height:2.1">
+    ऐं ह्रीं श्रीं<br>
+    श्रीमाता श्रीमहाराज्ञी<br>
+    श्रीमत्सिंहासनेश्वरी<br>
+    जपाकुसुमभासुरां जपविधौ स्मरेदम्बिकाम्
+  </div>
+  <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.95rem;color:var(--mid-brown);margin-top:0.8rem;line-height:1.8">
+    Aiṃ Hrīṃ Śrīṃ — Śrī Mātā, Śrī Mahārājñī, Śrīmat-Siṃhāsaneśvarī<br>
+    Blazing like the japa flower — on Her I meditate during japa
+  </div>
+</div>
+
+<div class="footnote">
+  <strong>Primary Sources:</strong> Brahmāṇḍa Purāṇa, Uttarabhāga, Adhyāya 6–7 (Motilal Banarsidass edition); Bhāskararāya Makhin, <em>Saubhāgyabhāskara</em> (commentary on Lalitā Sahasranāma); Bhāskararāya, <em>Varivasya Rahasya</em> (on the Pañcadaśī mantra and dhyāna prescriptions); Śaṅkarācārya, <em>Saundaryalaharī</em> with Lakṣmīdhara's commentary; <em>Tantrārāja Tantra</em>; <em>Vāmakeśvara Tantra</em>; <em>Devīmāhātmya</em> (Mārkaṇḍeya Purāṇa); <em>Haṭhayogapradīpikā</em> Ch. 4 (Nāda Yoga); <em>Nāda Bindu Upaniṣad</em>.
+  <br><br>
+  <strong>Modern Research Referenced:</strong> Engström et al. (2010) — fMRI of mantra repetition; Travis &amp; Shear (2010) — default mode network in meditation; Bowling &amp; Purves (2015) — cross-cultural psychoacoustics of vocal brightness; HeartMath Institute cardiac coherence research; Strassman (2001) — pineal and endogenous tryptamines; Martin Chaplin — water structure; Ekman &amp; Davidson — Duchenne smile neuroscience.
+  <br><br>
+  <em>Note on the karma and violence passages (Adhyāya 6, vv. 37–50): these passages are presented with full scholarly commentary that contextualizes them historically. The graduated values placed on human lives reflect the hierarchical social framework of ancient India and are not endorsed as eternal prescriptions. The broader Śākta tradition, particularly as understood through Bhāskararāya's Śrī Vidyā lineage, consistently affirms the Goddess's unconditional availability to all seekers regardless of social category.</em>
+</div>
+
+</div><!-- /page-wrap -->
+
+<script>
+// Progress bar
+window.addEventListener('scroll', function(){
+  var scrollTop = window.scrollY || document.documentElement.scrollTop;
+  var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  var pct = docHeight > 0 ? (scrollTop / docHeight * 100) : 0;
+  document.getElementById('progressBar').style.width = pct + '%';
+});
+
+// TOC dot navigation
+function scrollTo(dot) {
+  var target = document.getElementById(dot.dataset.target);
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+// Highlight active TOC dot on scroll
+var sections = ['sec-dhyana4','sec-namas-1','sec-namas-13','sec-namas-30','sec-dialogue','sec-karma','sec-shakti'];
+var dots = document.querySelectorAll('.toc-dot');
+window.addEventListener('scroll', function(){
+  var fromTop = window.scrollY + 120;
+  var current = '';
+  sections.forEach(function(id){
+    var el = document.getElementById(id);
+    if (el && el.offsetTop <= fromTop) current = id;
+  });
+  dots.forEach(function(d){
+    d.classList.toggle('active', d.dataset.target === current);
+  });
+});
+</script>
+
+</body>
+</html>
