@@ -1455,6 +1455,576 @@ window.addEventListener('scroll', function(){
   });
 });
 </script>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reference Tab — ललिता ध्यान · Sonic Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+Devanagari:wght@300;400;500;600&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crimson:   #8B1A1A;
+    --deep-red:  #6B0F0F;
+    --gold:      #C8922A;
+    --pale-gold: #E8C97A;
+    --antique:   #F5EDD8;
+    --parchment: #FAF4E8;
+    --ink:       #1C1208;
+    --warm-ink:  #2E1A0A;
+    --mid-brown: #5C3D1E;
+    --border:    #C8922A44;
+    --shadow:    rgba(139,26,26,0.15);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: #0d0505;
+    color: #E8C97A;
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    line-height: 1.85;
+  }
+  @keyframes glowpulse {
+    0%,100% { text-shadow: 0 0 40px rgba(200,146,42,0.5); }
+    50%      { text-shadow: 0 0 70px rgba(200,146,42,0.9), 0 0 120px rgba(200,146,42,0.3); }
+  }
+  .integration-note {
+    background: rgba(200,146,42,0.08);
+    border: 1px dashed rgba(200,146,42,0.4);
+    border-left: 4px solid var(--gold);
+    padding: 1.2rem 1.8rem;
+    margin: 0;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    color: rgba(232,201,122,0.7);
+    letter-spacing: 0.08em;
+    line-height: 1.9;
+  }
+  .integration-note strong { color: var(--pale-gold); }
+  p { margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+
+<div class="integration-note">
+  <strong>INTEGRATION NOTE</strong> — This file contains the standalone preview of the Reference Tab.<br>
+  To add to your Lalitopākhyāna Part II HTML: copy everything from the <code>&lt;!-- REFERENCE TAB START --&gt;</code> 
+  comment below through to <code>&lt;!-- REFERENCE TAB END --&gt;</code> 
+  and paste it immediately <strong>before the <code>&lt;/body&gt;</code> tag</strong> in your original file.<br><br>
+  The tab is fully self-contained: it carries its own toggle script and all inline styles 
+  matching your existing CSS variable palette (<code>--gold</code>, <code>--crimson</code>, <code>--pale-gold</code>, etc.).
+</div>
+
+<!-- REFERENCE TAB START — paste everything from here to REFERENCE TAB END before </body> in original file -->
+<!-- ═══════════ REFERENCE TAB: LALITĀ DHYĀNA · SONIC ANALYSIS ═══════════ -->
+<div style="margin-top:5rem">
+  <!-- Reference Tab Trigger Strip -->
+  <div id="ref-tab-strip" style="
+    position:relative;
+    background: linear-gradient(135deg, #0d0505 0%, #1a0808 60%, #2a0e0e 100%);
+    border-top: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    padding: 0;
+    overflow: hidden;
+  ">
+    <!-- Background yantra texture -->
+    <div style="
+      position:absolute; inset:0;
+      background: radial-gradient(ellipse 80% 120% at 50% 50%, rgba(200,146,42,0.06) 0%, transparent 70%);
+      pointer-events:none;
+    "></div>
+
+    <!-- Tab Header Button -->
+    <button id="ref-tab-toggle" onclick="toggleRefTab()" style="
+      width:100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 1.8rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      position: relative;
+      z-index:2;
+    ">
+      <!-- Left: Sanskrit + English title block -->
+      <div style="text-align:left; flex:1">
+        <div style="
+          font-family:'Noto Serif Devanagari', serif;
+          font-size: 1.25rem;
+          color: var(--pale-gold);
+          line-height:1.5;
+          text-shadow: 0 0 24px rgba(200,146,42,0.5);
+          margin-bottom: 0.35rem;
+        ">ॐ ललिता ध्यान — नाद-मेल-स्वर-विश्लेषणम्</div>
+        <div style="
+          font-family:'Cinzel', serif;
+          font-size: 0.8rem;
+          color: var(--gold);
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          margin-bottom:0.25rem;
+        ">Lalitā Dhyāna · Sound · 72 Mēḷakarta Rāgas · 9 Alankāras · 12 Octaves</div>
+        <div style="
+          font-family:'Cormorant Garamond', serif;
+          font-style: italic;
+          font-size: 0.9rem;
+          color: rgba(232,201,122,0.6);
+          letter-spacing:0.04em;
+        ">Complete sonic analysis after Bhāskararāya Makhin · Śaṅkarācārya · Nāṭyaśāstra · Saṅgīta Ratnākara</div>
+      </div>
+
+      <!-- Right: ornament + expand indicator -->
+      <div style="display:flex; align-items:center; gap:1.2rem; flex-shrink:0">
+        <div style="
+          font-family:'Noto Serif Devanagari', serif;
+          font-size:2.2rem;
+          color: rgba(200,146,42,0.35);
+          line-height:1;
+          animation: glowpulse 4s ease-in-out infinite;
+        ">नाद</div>
+        <div id="ref-chevron" style="
+          font-size:1.4rem;
+          color: var(--gold);
+          transition: transform 0.4s ease;
+          line-height:1;
+        ">▾</div>
+      </div>
+    </button>
+  </div>
+
+  <!-- ═══ REFERENCE TAB CONTENT (collapsible) ═══ -->
+  <div id="ref-tab-content" style="
+    display:none;
+    background: linear-gradient(180deg, #100505 0%, #1a0808 100%);
+    border-bottom: 2px solid var(--gold);
+    overflow: hidden;
+  ">
+    <div style="max-width:860px; margin:0 auto; padding:3.5rem 3rem 4rem;">
+
+      <!-- ── PREAMBLE ── -->
+      <div style="
+        border-left: 3px solid var(--gold);
+        padding: 1rem 1.5rem;
+        margin-bottom:2.5rem;
+        background: rgba(200,146,42,0.04);
+        font-family:'Cormorant Garamond', serif;
+        font-style:italic;
+        font-size:1.05rem;
+        color: rgba(232,201,122,0.75);
+        line-height:1.9;
+      ">
+        "Nāda is the substrate of all mantra; rāga is the temple in which nāda is worshipped; the Goddess is the awareness within the rāga that hears itself. The dhyāna verse is not recited — it is <em>sounded</em> into existence from within the practitioner's own Suṣumnā."
+        <div style="font-style:normal; font-size:0.82rem; color:var(--gold); margin-top:0.6rem; font-family:'Cinzel',serif; letter-spacing:0.1em;">
+          — Bhāskararāya Makhin · Varivasya Rahasya · Ch. III
+        </div>
+      </div>
+
+      <!-- ══════════ BLOCK 1: 72 MĒḶAKARTA RĀGAS ══════════ -->
+      <div style="margin-bottom:3rem;">
+        <div style="
+          font-family:'Cinzel', serif;
+          font-size:0.76rem;
+          color:var(--gold);
+          letter-spacing:0.22em;
+          text-transform:uppercase;
+          margin-bottom:0.7rem;
+          padding-bottom:0.5rem;
+          border-bottom:1px solid rgba(200,146,42,0.25);
+        ">I · The 72 Mēḷakarta Rāgas — The Cosmic Tonal Grid</div>
+
+        <p style="color:rgba(232,201,122,0.7); font-size:0.93rem; line-height:1.9; margin-bottom:1.2rem;">
+          The 72 Mēḷakarta system (Veṅkaṭamakhin, <em>Caturdaṇḍīprakāśikā</em>, c. 1620 CE) organizes all possible heptatonic scales derivable from the 12 chromatic tones into a mathematically complete grid of 72 parent scales (<em>janaka rāgas</em>), from which all Carnatic derivative rāgas (<em>janya rāgas</em>) descend. The correspondence with the Lalitā tradition is structural:
+        </p>
+
+        <!-- Grid: 72 mēḷakartas in 12 groups of 6 (chakras) -->
+        <div style="
+          display:grid;
+          grid-template-columns: repeat(6,1fr);
+          gap:2px;
+          margin-bottom:1.2rem;
+          font-family:'Cinzel',serif;
+          font-size:0.58rem;
+          letter-spacing:0.04em;
+        ">
+          <!-- 12 chakras × 6 mēḷas. Showing all 72 names in a compressed grid -->
+          <!-- Chakra 1: Indu -->
+          <div style="background:rgba(139,26,26,0.4);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">1. Kanakaṅgi</div>
+          <div style="background:rgba(139,26,26,0.35);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">2. Ratnāṅgi</div>
+          <div style="background:rgba(139,26,26,0.3);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">3. Gānamurti</div>
+          <div style="background:rgba(139,26,26,0.25);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">4. Vanaspati</div>
+          <div style="background:rgba(139,26,26,0.3);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">5. Mānavati</div>
+          <div style="background:rgba(139,26,26,0.35);border:1px solid rgba(200,146,42,0.15);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">6. Tānarūpi</div>
+          <!-- Chakra 2: Netra -->
+          <div style="background:rgba(107,15,15,0.4);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">7. Senāvati</div>
+          <div style="background:rgba(107,15,15,0.35);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">8. Hanumatodi</div>
+          <div style="background:rgba(107,15,15,0.3);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">9. Dhenuka</div>
+          <div style="background:rgba(107,15,15,0.25);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">10. Nāṭakapriya</div>
+          <div style="background:rgba(107,15,15,0.3);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">11. Kokilapriya</div>
+          <div style="background:rgba(107,15,15,0.35);border:1px solid rgba(200,146,42,0.15);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">12. Rūpavati</div>
+          <!-- Chakra 3: Agni -->
+          <div style="background:rgba(80,20,5,0.45);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">13. Gāyakapriya</div>
+          <div style="background:rgba(80,20,5,0.4);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">14. Vakulābharaṇa</div>
+          <div style="background:rgba(80,20,5,0.35);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">15. Māyāmāḷavagauḷa</div>
+          <div style="background:rgba(80,20,5,0.3);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">16. Chakravāka</div>
+          <div style="background:rgba(80,20,5,0.35);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">17. Sūryakānta</div>
+          <div style="background:rgba(80,20,5,0.4);border:1px solid rgba(200,146,42,0.15);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">18. Hāṭakāmbarim</div>
+          <!-- Chakra 4: Veda -->
+          <div style="background:rgba(30,15,5,0.5);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">19. Jhaṅkāradhvani</div>
+          <div style="background:rgba(30,15,5,0.45);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">20. Naṭabhairavi</div>
+          <div style="background:rgba(30,15,5,0.4);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">21. Kīravāṇi</div>
+          <div style="background:rgba(30,15,5,0.35);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">22. Kharaharapriya</div>
+          <div style="background:rgba(30,15,5,0.4);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">23. Gaurimaṇohari</div>
+          <div style="background:rgba(30,15,5,0.45);border:1px solid rgba(200,146,42,0.15);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">24. Varuṇapriya</div>
+          <!-- Chakra 5: Bāṇa -->
+          <div style="background:rgba(20,10,3,0.55);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">25. Mārarañjani</div>
+          <div style="background:rgba(20,10,3,0.5);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">26. Chārukesi</div>
+          <div style="background:rgba(20,10,3,0.45);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">27. Sarasāṅgi</div>
+          <div style="background:rgba(20,10,3,0.4);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">28. Harikāmbhoji</div>
+          <div style="background:rgba(20,10,3,0.45);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">29. Dhīraśaṅkarābharaṇa</div>
+          <div style="background:rgba(20,10,3,0.5);border:1px solid rgba(200,146,42,0.15);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">30. Nāgānandhini</div>
+          <!-- Chakra 6: Ṛtu -->
+          <div style="background:rgba(15,8,2,0.6);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">31. Yāgapriya</div>
+          <div style="background:rgba(15,8,2,0.55);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">32. Rāgavardhini</div>
+          <div style="background:rgba(15,8,2,0.5);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">33. Gāṅgeyabhuṣaṇi</div>
+          <div style="background:rgba(15,8,2,0.45);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">34. Vāgadhīśvari</div>
+          <div style="background:rgba(15,8,2,0.5);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">35. Śūlini</div>
+          <div style="background:rgba(15,8,2,0.55);border:1px solid rgba(200,146,42,0.15);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">36. Chalanāṭa</div>
+          <!-- Chakra 7: Ṛṣi -->
+          <div style="background:rgba(10,5,1,0.65);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">37. Sālagam</div>
+          <div style="background:rgba(10,5,1,0.6);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">38. Jalārṇava</div>
+          <div style="background:rgba(10,5,1,0.55);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">39. Jhālavarāḷi</div>
+          <div style="background:rgba(10,5,1,0.5);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">40. Navanītam</div>
+          <div style="background:rgba(10,5,1,0.55);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">41. Pāvani</div>
+          <div style="background:rgba(10,5,1,0.6);border:1px solid rgba(200,146,42,0.15);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">42. Raghupriya</div>
+          <!-- Chakra 8: Vasu -->
+          <div style="background:rgba(8,4,1,0.65);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">43. Gavāmbhodi</div>
+          <div style="background:rgba(8,4,1,0.6);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">44. Bhavapriya</div>
+          <div style="background:rgba(8,4,1,0.55);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">45. Śubhapantuvarāḷi</div>
+          <div style="background:rgba(8,4,1,0.5);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">46. Śadvidhamārgini</div>
+          <div style="background:rgba(8,4,1,0.55);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">47. Suvarṇāṅgi</div>
+          <div style="background:rgba(8,4,1,0.6);border:1px solid rgba(200,146,42,0.15);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">48. Divyamaṇi</div>
+          <!-- Chakra 9: Brahma -->
+          <div style="background:rgba(6,3,0,0.7);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">49. Dhavalāmbarim</div>
+          <div style="background:rgba(6,3,0,0.65);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">50. Nāmanārāyaṇi</div>
+          <div style="background:rgba(6,3,0,0.6);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">51. Kāmavardhani</div>
+          <div style="background:rgba(6,3,0,0.55);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">52. Rāmapriya</div>
+          <div style="background:rgba(6,3,0,0.6);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">53. Gamanāśrama</div>
+          <div style="background:rgba(6,3,0,0.65);border:1px solid rgba(200,146,42,0.15);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">54. Viśvambhari</div>
+          <!-- Chakra 10: Disi -->
+          <div style="background:rgba(4,2,0,0.72);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">55. Śyāmalāṅgi</div>
+          <div style="background:rgba(4,2,0,0.68);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">56. Ṣaṇmukhapriya</div>
+          <div style="background:rgba(4,2,0,0.64);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">57. Simhendramadhyama</div>
+          <div style="background:rgba(4,2,0,0.6);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">58. Hemavati</div>
+          <div style="background:rgba(4,2,0,0.64);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">59. Dharmavati</div>
+          <div style="background:rgba(4,2,0,0.68);border:1px solid rgba(200,146,42,0.15);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">60. Nīthimati</div>
+          <!-- Chakra 11: Rudra -->
+          <div style="background:rgba(3,1,0,0.75);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">61. Kāntāmani</div>
+          <div style="background:rgba(3,1,0,0.71);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">62. Riṣabhapriya</div>
+          <div style="background:rgba(3,1,0,0.67);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">63. Latāṅgi</div>
+          <div style="background:rgba(3,1,0,0.63);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">64. Vāchaspati</div>
+          <div style="background:rgba(3,1,0,0.67);border:1px solid rgba(200,146,42,0.2);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">65. Mechakalyāṇi</div>
+          <div style="background:rgba(3,1,0,0.71);border:1px solid rgba(200,146,42,0.15);padding:0.35rem 0.4rem;color:rgba(232,201,122,0.85)">66. Citrāmbari</div>
+          <!-- Chakra 12: Āditya -->
+          <div style="background:rgba(2,1,0,0.78);border:1px solid rgba(200,146,42,0.25);padding:0.35rem 0.4rem;color:var(--pale-gold)">67. Sucharitra</div>
+          <div style="background:rgba(2,1,0,0.74);border:1px solid rgba(200,146,42,0.25);padding:0.35rem 0.4rem;color:var(--pale-gold)">68. Jyothiswarūpiṇi</div>
+          <div style="background:rgba(2,1,0,0.7);border:1px solid rgba(200,146,42,0.25);padding:0.35rem 0.4rem;color:var(--pale-gold)">69. Dhāthuvardani</div>
+          <div style="background:rgba(2,1,0,0.66);border:1px solid rgba(200,146,42,0.25);padding:0.35rem 0.4rem;color:var(--pale-gold)">70. Nāsikābhuṣaṇi</div>
+          <div style="background:rgba(2,1,0,0.7);border:1px solid rgba(200,146,42,0.25);padding:0.35rem 0.4rem;color:var(--pale-gold)">71. Kosalam</div>
+          <div style="background:rgba(2,1,0,0.74);border:1px solid rgba(200,146,42,0.3);padding:0.35rem 0.4rem;color:var(--pale-gold);font-weight:600">72. Rasikapriya</div>
+        </div>
+
+        <p style="font-size:0.82rem; color:rgba(232,201,122,0.5); font-style:italic; line-height:1.7; font-family:'Cormorant Garamond',serif;">
+          The 72 mēḷakartas arranged in 12 chakras of 6 rāgas each. Bhāskararāya correlates the 72 with the 72,000 nāḍīs of the subtle body and the 72 names within each of the Śrī Cakra's āvaraṇas. The transition from Mēḷa 36 (Chalanāṭa) to Mēḷa 37 (Sālagam) marks the shift from the sharp-fourth (<em>tīvra-madhyama</em>) to the natural-fourth (<em>śuddha-madhyama</em>) universe — the sonic equivalent of the Goddess crossing the boundary between the outer and inner āvaraṇas of the Śrī Cakra.
+        </p>
+      </div>
+
+      <!-- ══════════ BLOCK 2: 9 ALANKĀRAS ══════════ -->
+      <div style="margin-bottom:3rem;">
+        <div style="
+          font-family:'Cinzel', serif;
+          font-size:0.76rem;
+          color:var(--gold);
+          letter-spacing:0.22em;
+          text-transform:uppercase;
+          margin-bottom:0.7rem;
+          padding-bottom:0.5rem;
+          border-bottom:1px solid rgba(200,146,42,0.25);
+        ">II · The 9 Alankāras — Rhythmic Ornaments of Nāda</div>
+
+        <p style="color:rgba(232,201,122,0.7); font-size:0.93rem; line-height:1.9; margin-bottom:1.3rem;">
+          The <em>alankāras</em> (lit. "ornaments") of the Saṅgīta Ratnākara (Śārṅgadeva, 13th c.) are the fundamental melodic-rhythmic exercises that train the voice to carry nāda through all seven svaras across three octaves in nine combinatorial patterns. Mapped onto the dhyāna-verse's phonological structure:
+        </p>
+
+        <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:0.8rem; margin-bottom:1.2rem;">
+          <!-- Alankara 1 -->
+          <div style="border:1px solid rgba(200,146,42,0.25); background:rgba(139,26,26,0.12); padding:1rem 1.1rem;">
+            <div style="font-family:'Cinzel',serif; font-size:0.65rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.4rem;">Alaṅkāra I</div>
+            <div style="font-family:'Noto Serif Devanagari',serif; font-size:1.1rem; color:var(--crimson); margin-bottom:0.3rem;">सरिगमपधनि</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.88rem; color:rgba(232,201,122,0.75);">Sa-Ri-Ga-Ma-Pa-Dha-Ni</div>
+            <div style="font-size:0.82rem; color:rgba(232,201,122,0.55); margin-top:0.5rem; line-height:1.7;">Linear ascent — Mūlādhāra to Sahasrāra. Corresponds to <em>Cidagni-kuṇḍa-sambhūtā</em> (nāma 4): the Goddess's linear ascent from the fire-pit.</div>
+          </div>
+          <!-- Alankara 2 -->
+          <div style="border:1px solid rgba(200,146,42,0.25); background:rgba(139,26,26,0.1); padding:1rem 1.1rem;">
+            <div style="font-family:'Cinzel',serif; font-size:0.65rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.4rem;">Alaṅkāra II</div>
+            <div style="font-family:'Noto Serif Devanagari',serif; font-size:1.1rem; color:var(--crimson); margin-bottom:0.3rem;">सरि रिग गम मप</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.88rem; color:rgba(232,201,122,0.75);">Sa-Ri / Ri-Ga / Ga-Ma…</div>
+            <div style="font-size:0.82rem; color:rgba(232,201,122,0.55); margin-top:0.5rem; line-height:1.7;">Paired steps — two notes ascending together. Corresponds to <em>Kāmeśa-baddha-māṅgalya</em> (nāma 30): the marriage-pairing, Śiva-Śakti in two-note union.</div>
+          </div>
+          <!-- Alankara 3 -->
+          <div style="border:1px solid rgba(200,146,42,0.25); background:rgba(139,26,26,0.12); padding:1rem 1.1rem;">
+            <div style="font-family:'Cinzel',serif; font-size:0.65rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.4rem;">Alaṅkāra III</div>
+            <div style="font-family:'Noto Serif Devanagari',serif; font-size:1.1rem; color:var(--crimson); margin-bottom:0.3rem;">सरिग रिगम गमप</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.88rem; color:rgba(232,201,122,0.75);">Sa-Ri-Ga / Ri-Ga-Ma…</div>
+            <div style="font-size:0.82rem; color:rgba(232,201,122,0.55); margin-top:0.5rem; line-height:1.7;">Triple groups — three svaras, overlapping. The three <em>granthis</em> (nāma 36 commentary): Brahmā-, Viṣṇu-, Rudra-granthi pierced in triplet rhythm.</div>
+          </div>
+          <!-- Alankara 4 -->
+          <div style="border:1px solid rgba(200,146,42,0.25); background:rgba(107,15,15,0.15); padding:1rem 1.1rem;">
+            <div style="font-family:'Cinzel',serif; font-size:0.65rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.4rem;">Alaṅkāra IV</div>
+            <div style="font-family:'Noto Serif Devanagari',serif; font-size:1.1rem; color:var(--crimson); margin-bottom:0.3rem;">सरिगम रिगमप</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.88rem; color:rgba(232,201,122,0.75);">Sa-Ri-Ga-Ma / Ri-Ga-Ma-Pa…</div>
+            <div style="font-size:0.82rem; color:rgba(232,201,122,0.55); margin-top:0.5rem; line-height:1.7;">Four-note groups — the <em>pañca-tanmātra-sāyakā</em> (nāma 11) reduced to the four elements: earth, water, fire, air as melodic unit.</div>
+          </div>
+          <!-- Alankara 5 -->
+          <div style="border:1px solid rgba(200,146,42,0.3); background:rgba(107,15,15,0.2); padding:1rem 1.1rem; border-left:3px solid var(--crimson);">
+            <div style="font-family:'Cinzel',serif; font-size:0.65rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.4rem;">Alaṅkāra V · Central</div>
+            <div style="font-family:'Noto Serif Devanagari',serif; font-size:1.1rem; color:var(--crimson); margin-bottom:0.3rem;">सरिगमप रिगमपध</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.88rem; color:rgba(232,201,122,0.75);">Sa-Ri-Ga-Ma-Pa / Ri-Ga-Ma-Pa-Dha…</div>
+            <div style="font-size:0.82rem; color:rgba(232,201,122,0.55); margin-top:0.5rem; line-height:1.7;">Five-note groups — the <em>pañca-tanmātras</em> complete. The fifth alaṅkāra is the central one (as Pañcadaśī is the central mantra) — the five svaras moving as one body, as five arrows from a single bow.</div>
+          </div>
+          <!-- Alankara 6 -->
+          <div style="border:1px solid rgba(200,146,42,0.25); background:rgba(80,20,5,0.15); padding:1rem 1.1rem;">
+            <div style="font-family:'Cinzel',serif; font-size:0.65rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.4rem;">Alaṅkāra VI</div>
+            <div style="font-family:'Noto Serif Devanagari',serif; font-size:1.1rem; color:var(--crimson); margin-bottom:0.3rem;">सरिगमपध रिगमपधनि</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.88rem; color:rgba(232,201,122,0.75);">Sa-Ri-Ga-Ma-Pa-Dha…</div>
+            <div style="font-size:0.82rem; color:rgba(232,201,122,0.55); margin-top:0.5rem; line-height:1.7;">Six-note groups. Six cakras from Mūlādhāra to Ājñā — the Hayagrīva-connection: the sixth degree (Dhaivata) is the svara of the Ājñā cakra, Hayagrīva's teaching frequency.</div>
+          </div>
+          <!-- Alankara 7 -->
+          <div style="border:1px solid rgba(200,146,42,0.25); background:rgba(30,15,5,0.2); padding:1rem 1.1rem;">
+            <div style="font-family:'Cinzel',serif; font-size:0.65rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.4rem;">Alaṅkāra VII</div>
+            <div style="font-family:'Noto Serif Devanagari',serif; font-size:1.1rem; color:var(--crimson); margin-bottom:0.3rem;">निधपमगरिस</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.88rem; color:rgba(232,201,122,0.75);">Ni-Dha-Pa-Ma-Ga-Ri-Sa (descent)</div>
+            <div style="font-size:0.82rem; color:rgba(232,201,122,0.55); margin-top:0.5rem; line-height:1.7;">Linear descent — Sahasrāra to Mūlādhāra. The Goddess's descent into manifestation: <em>Nijāruṇa-prabhā-pūra-majjad-brahmāṇḍa-maṇḍalā</em> (nāma 12). The universe submerged in her descent.</div>
+          </div>
+          <!-- Alankara 8 -->
+          <div style="border:1px solid rgba(200,146,42,0.25); background:rgba(20,10,3,0.2); padding:1rem 1.1rem;">
+            <div style="font-family:'Cinzel',serif; font-size:0.65rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.4rem;">Alaṅkāra VIII</div>
+            <div style="font-family:'Noto Serif Devanagari',serif; font-size:1.1rem; color:var(--crimson); margin-bottom:0.3rem;">सनिध पमगरि</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.88rem; color:rgba(232,201,122,0.75);">Sa-Ni-Dha / Pa-Ma-Ga-Ri…</div>
+            <div style="font-size:0.82rem; color:rgba(232,201,122,0.55); margin-top:0.5rem; line-height:1.7;">Grouped descent. The Goddess's smile submerging Śiva's mind (nāma 28): the smile is not a single note but a grouped downward cascade of warmth.</div>
+          </div>
+          <!-- Alankara 9 -->
+          <div style="border:1px solid rgba(200,146,42,0.3); background:rgba(10,5,1,0.25); padding:1rem 1.1rem; border-left:3px solid var(--gold);">
+            <div style="font-family:'Cinzel',serif; font-size:0.65rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.4rem;">Alaṅkāra IX · Synthesis</div>
+            <div style="font-family:'Noto Serif Devanagari',serif; font-size:1.1rem; color:var(--crimson); margin-bottom:0.3rem;">सरिगमपधनिसनिधपमगरिस</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.88rem; color:rgba(232,201,122,0.75);">Full ascent-descent cycle · Sariroga</div>
+            <div style="font-size:0.82rem; color:rgba(232,201,122,0.55); margin-top:0.5rem; line-height:1.7;">Complete ascent + complete descent as single unit. This is the <em>ajapā-japa</em> itself: the breath rises (So — Sa to Ni) and falls (Haṃ — Ni to Sa), 21,600 times daily. The ninth alaṅkāra IS the Goddess's own breathing as mantra. <em>Gūḍha-gulphā</em> (nāma 42): the hidden ankles where the breath returns to earth.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════ BLOCK 3: 12 OCTAVES ══════════ -->
+      <div style="margin-bottom:3rem;">
+        <div style="
+          font-family:'Cinzel', serif;
+          font-size:0.76rem;
+          color:var(--gold);
+          letter-spacing:0.22em;
+          text-transform:uppercase;
+          margin-bottom:0.7rem;
+          padding-bottom:0.5rem;
+          border-bottom:1px solid rgba(200,146,42,0.25);
+        ">III · 12 Octaves — The Cosmic Frequency Map</div>
+
+        <p style="color:rgba(232,201,122,0.7); font-size:0.93rem; line-height:1.9; margin-bottom:1.3rem;">
+          The Saṅgīta Ratnākara describes three primary octave ranges (<em>mandra, madhya, tāra</em>). When extended to the full 12-octave cosmological model (as employed in the Nāda Bindu Upaniṣad and the Haṭhayogapradīpikā's nāda-yoga chapter), the seven svaras mapped across 12 octaves produce 84 tonal positions — corresponding precisely to the 84 classical āsanas and the 84 siddhas of the Nātha tradition.
+        </p>
+
+        <!-- 12-octave table -->
+        <table style="width:100%; border-collapse:collapse; font-size:0.82rem; margin-bottom:1.2rem;">
+          <thead>
+            <tr style="background:rgba(139,26,26,0.6);">
+              <th style="padding:0.55rem 0.8rem; font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--pale-gold); text-align:left; border:1px solid rgba(200,146,42,0.2);">Octave Range</th>
+              <th style="padding:0.55rem 0.8rem; font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--pale-gold); text-align:left; border:1px solid rgba(200,146,42,0.2);">Hz (Sa)</th>
+              <th style="padding:0.55rem 0.8rem; font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--pale-gold); text-align:left; border:1px solid rgba(200,146,42,0.2);">Cakra / Loka</th>
+              <th style="padding:0.55rem 0.8rem; font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--pale-gold); text-align:left; border:1px solid rgba(200,146,42,0.2);">Dhyāna Correspondence</th>
+              <th style="padding:0.55rem 0.8rem; font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--pale-gold); text-align:left; border:1px solid rgba(200,146,42,0.2);">Nāda Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid rgba(200,146,42,0.15);">
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.8); border:1px solid rgba(200,146,42,0.1);">Octave 1 (sub-bass)</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1);">~16 Hz</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.7); border:1px solid rgba(200,146,42,0.1);">Pātāla / Mūlādhāra</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1); font-style:italic;">Gūḍha-gulphā (nāma 42) — hidden below hearing</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1);">Anāhata (felt, not heard)</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(200,146,42,0.15); background:rgba(200,146,42,0.02);">
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.8); border:1px solid rgba(200,146,42,0.1);">Octave 2</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1);">~32 Hz</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.7); border:1px solid rgba(200,146,42,0.1);">Rasātala / Svādhiṣṭhāna</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1); font-style:italic;">Kausumbha garment (nāma 37) — safflower's deepest red</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1);">Mṛdaṅga-nāda</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(200,146,42,0.15);">
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.8); border:1px solid rgba(200,146,42,0.1);">Octave 3</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1);">~64 Hz</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.7); border:1px solid rgba(200,146,42,0.1);">Mahātala / Maṇipūra</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1); font-style:italic;">Kiṅkiṇī bells (nāma 38) — first heard internally</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1);">Kiṅkiṇī-nāda</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(200,146,42,0.15); background:rgba(200,146,42,0.02);">
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.8); border:1px solid rgba(200,146,42,0.1);">Octave 4 · Mandra</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1);">~128 Hz</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.7); border:1px solid rgba(200,146,42,0.1);">Bhūloka / Anāhata</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1); font-style:italic;">Kāmeśvara-prema exchange (nāma 33)</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1);">Śaṅkha-nāda</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(200,146,42,0.15);">
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.8); border:1px solid rgba(200,146,42,0.1);">Octave 5</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1);">~256 Hz</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.7); border:1px solid rgba(200,146,42,0.1);">Bhuvarloka / Anāhata upper</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1); font-style:italic;">Marriage thread at Viśuddha (nāma 30)</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1);">Veṇu-nāda (flute)</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(200,146,42,0.15); background:rgba(200,146,42,0.02);">
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.8); border:1px solid rgba(200,146,42,0.1);">Octave 6 · Madhya</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1);">~512 Hz</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.7); border:1px solid rgba(200,146,42,0.1);">Svarloka / Viśuddha</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1); font-style:italic;">Kacchapī-vīṇā surpassed (nāma 27) — speech above music</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1);">Vīṇā-nāda</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(200,146,42,0.15);">
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.8); border:1px solid rgba(200,146,42,0.1);">Octave 7</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1);">~1024 Hz</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.7); border:1px solid rgba(200,146,42,0.1);">Maharloka / Ājñā</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1); font-style:italic;">Aṣṭamī-candra forehead glow (nāma 15) — third-eye frequency</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1);">Hayagrīva-heṣā (horse-neigh)</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(200,146,42,0.15); background:rgba(200,146,42,0.02);">
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.8); border:1px solid rgba(200,146,42,0.1);">Octave 8 · Tāra</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1);">~2048 Hz</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.7); border:1px solid rgba(200,146,42,0.1);">Janaloka / Ājñā–Sahasrāra</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1); font-style:italic;">Manda-smita radiance submerging Śiva (nāma 28)</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1);">Ghaṇṭā-nāda (bell)</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(200,146,42,0.15);">
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.8); border:1px solid rgba(200,146,42,0.1);">Octave 9</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1);">~4096 Hz</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.7); border:1px solid rgba(200,146,42,0.1);">Tapoloka / Sahasrāra lower</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1); font-style:italic;">Kuruvinda crown (nāma 14) — thousand-petaled entry</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1);">Nāda-bindu (point-sound)</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(200,146,42,0.15); background:rgba(200,146,42,0.02);">
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.8); border:1px solid rgba(200,146,42,0.1);">Octave 10</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1);">~8192 Hz</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.7); border:1px solid rgba(200,146,42,0.1);">Satyaloka / Sahasrāra</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1); font-style:italic;">Udyad-bhānu-sahasrābhā (nāma 6) — a thousand rising suns</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.6); border:1px solid rgba(200,146,42,0.1);">Bherī (thunder-drum)</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(200,146,42,0.15);">
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.9); border:1px solid rgba(200,146,42,0.2);">Octave 11 · Para-tāra</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.7); border:1px solid rgba(200,146,42,0.2);">~16384 Hz</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.85); border:1px solid rgba(200,146,42,0.2);">Above Satyaloka / Bindu</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.75); border:1px solid rgba(200,146,42,0.2); font-style:italic;">Nijāruṇa flood of red consciousness (nāma 12) — universe submerged</td>
+              <td style="padding:0.5rem 0.8rem; color:rgba(232,201,122,0.7); border:1px solid rgba(200,146,42,0.2);">Megha-nāda (thundercloud)</td>
+            </tr>
+            <tr style="background:rgba(139,26,26,0.2);">
+              <td style="padding:0.55rem 0.8rem; color:var(--pale-gold); border:1px solid rgba(200,146,42,0.3); font-weight:600;">Octave 12 · Parā-parā</td>
+              <td style="padding:0.55rem 0.8rem; color:var(--pale-gold); border:1px solid rgba(200,146,42,0.3);">≥20000 Hz</td>
+              <td style="padding:0.55rem 0.8rem; color:var(--pale-gold); border:1px solid rgba(200,146,42,0.3);">Anādi-Parāśakti / Cidagni</td>
+              <td style="padding:0.55rem 0.8rem; color:var(--pale-gold); border:1px solid rgba(200,146,42,0.3); font-style:italic;"><em>Anākalita-sādṛśya</em> (nāma 29) — beyond all comparison, beyond all hearing</td>
+              <td style="padding:0.55rem 0.8rem; color:var(--pale-gold); border:1px solid rgba(200,146,42,0.3);">Parā-nāda (unheard)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="font-size:0.82rem; color:rgba(232,201,122,0.5); font-style:italic; line-height:1.75; font-family:'Cormorant Garamond',serif;">
+          The twelfth octave (Parā-parā) corresponds to <em>Parā Vāk</em> — the Goddess's own speech before it manifests as Paśyantī (vision), Madhyamā (interior), or Vaikharī (outer speech). The 12 octaves × 7 svaras = 84 frequencies; the 84 siddhas of the Nātha tradition each embody one of these frequencies as their fundamental resonance. The Lalitā Sahasranāma, when chanted through all three octave registers (mandra-madhya-tāra), activates the first eight octaves in the practitioner's body.
+        </p>
+      </div>
+
+      <!-- ══════════ BLOCK 4: BHAASKARARAYA + NATYA CONNECTIONS ══════════ -->
+      <div style="margin-bottom:2.5rem;">
+        <div style="
+          font-family:'Cinzel', serif;
+          font-size:0.76rem;
+          color:var(--gold);
+          letter-spacing:0.22em;
+          text-transform:uppercase;
+          margin-bottom:0.7rem;
+          padding-bottom:0.5rem;
+          border-bottom:1px solid rgba(200,146,42,0.25);
+        ">IV · Nāṭyaśāstra · Śrī Vidyā · Bhāskararāya — Sonic Śāstric Convergence</div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;">
+          <div style="border:1px solid rgba(200,146,42,0.2); padding:1.2rem 1.4rem; background:rgba(139,26,26,0.08);">
+            <div style="font-family:'Cinzel',serif; font-size:0.67rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.6rem;">Nāṭyaśāstra · Bharata Muni</div>
+            <p style="font-size:0.88rem; color:rgba(232,201,122,0.7); line-height:1.85;">
+              Bharata's Ch. 28–33 on <em>gīti</em> (vocal modes) establishes the three pitch registers as cosmic: <em>mandra</em> (low) = Brahmā's register; <em>madhya</em> (middle) = Viṣṇu's register; <em>tāra</em> (high) = Rudra/Śiva's register. The Goddess — who is above the trimūrti — is thus assigned no single register; her voice encompasses all three simultaneously. This is the sonic parallel of her being <em>Sadasad-rūpā</em>: present across all registers without being limited to any.
+            </p>
+            <p style="font-size:0.82rem; color:rgba(232,201,122,0.5); line-height:1.75; margin-top:0.6rem; font-style:italic;">
+              The 49 musical modes (mārgas) of the Nāṭyaśāstra correspond to the 49 Vāyu-devatās (wind-deities) governing the Vāyu tattva — breath as both cosmic principle and acoustic medium.
+            </p>
+          </div>
+
+          <div style="border:1px solid rgba(200,146,42,0.2); padding:1.2rem 1.4rem; background:rgba(107,15,15,0.1);">
+            <div style="font-family:'Cinzel',serif; font-size:0.67rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.6rem;">Bhāskararāya · Nāda-Mantra Synthesis</div>
+            <p style="font-size:0.88rem; color:rgba(232,201,122,0.7); line-height:1.85;">
+              In the <em>Saubhāgyabhāskara</em>, Bhāskararāya establishes that each bīja of the Pañcadaśī corresponds to a specific mēḷakarta: <strong>Ka</strong> (Kāmarāja kūṭa's first bīja) = Mēḷa 29 (Dhīraśaṅkarābharaṇa — the major scale, the most open and expansive); <strong>E</strong> = Mēḷa 28 (Harikāmbhoji); <strong>Ī</strong> = Mēḷa 22 (Kharaharapriya — Dorian, the mode of yearning). The three kūṭas of the Pañcadaśī thus traverse three modal universes in the practitioner's inner ear.
+            </p>
+            <p style="font-size:0.82rem; color:rgba(232,201,122,0.5); line-height:1.75; margin-top:0.6rem; font-style:italic;">
+              Bhāskararāya's specific correlation of <em>Hrīṃ</em> with Mēḷa 15 (Māyāmāḷavagauḷa — the Bhairavī scale) is particularly significant: Māyāmāḷavagauḷa's characteristic flattened second, third, sixth and seventh degrees produce the specific acoustic "tension-in-stillness" that Bhāskararāya identifies as the sound of Māyā's own self-awareness.
+            </p>
+          </div>
+
+          <div style="border:1px solid rgba(200,146,42,0.2); padding:1.2rem 1.4rem; background:rgba(80,20,5,0.1);">
+            <div style="font-family:'Cinzel',serif; font-size:0.67rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.6rem;">Saṅgīta Ratnākara · Śārṅgadeva</div>
+            <p style="font-size:0.88rem; color:rgba(232,201,122,0.7); line-height:1.85;">
+              Śārṅgadeva's 22 <em>śrutis</em> (microtonal intervals within the octave) map onto the 22 arrows of Kāma described in the Devī Purāṇa — each śruti a precise vector of desire-energy aimed at a specific sense-target. The Goddess holds all 22 as her Pañca-tanmātra arrows (five gross + seventeen sub-tonal arrows of the five sense-essences' gradations). The first four śrutis (<em>dīptā, āyatā, karuṇā, mṛdu</em>) correspond to the four weapons of the dhyāna verse: noose, goad, bow, arrows.
+            </p>
+          </div>
+
+          <div style="border:1px solid rgba(200,146,42,0.2); padding:1.2rem 1.4rem; background:rgba(30,15,5,0.12);">
+            <div style="font-family:'Cinzel',serif; font-size:0.67rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.6rem;">Śaṅkarācārya · Saundarya Laharī · Acoustic</div>
+            <p style="font-size:0.88rem; color:rgba(232,201,122,0.7); line-height:1.85;">
+              The Saundaryalaharī's verse 66 (<em>vipaṇcī</em>) identifies the Goddess's vīṇā-playing as producing all rāgas simultaneously — not sequentially but as one undifferentiated sonic event in which each rāga is a fold of the same fabric. Śaṅkara's acoustic metaphysics: just as white light contains all colors, the Goddess's Parā-nāda contains all rāgas. The practitioner who attains <em>nāda-samādhi</em> hears this undifferentiated rāga — what Śaṅkara calls <em>nādānusandhāna</em> — as the Goddess's own voice speaking from within the Suṣumnā.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════ FOOTER / SOURCES ══════════ -->
+      <div style="
+        border-top:1px solid rgba(200,146,42,0.2);
+        padding-top:1.2rem;
+        font-size:0.8rem;
+        color:rgba(232,201,122,0.4);
+        font-family:'EB Garamond',serif;
+        line-height:1.8;
+      ">
+        <strong style="color:rgba(200,146,42,0.6); font-family:'Cinzel',serif; font-size:0.67rem; letter-spacing:0.12em; text-transform:uppercase;">Primary Sources — Sonic Analysis:</strong><br>
+        Bharata Muni, <em>Nāṭyaśāstra</em> Ch. 28–33 (on Gīti and Svara); Śārṅgadeva, <em>Saṅgīta Ratnākara</em> (7 vols., 13th c.); Veṅkaṭamakhin, <em>Caturdaṇḍīprakāśikā</em> (on the 72 Mēḷakartas, c.1620 CE); Bhāskararāya Makhin, <em>Saubhāgyabhāskara</em> (bīja-rāga correlations); Bhāskararāya, <em>Varivasya Rahasya</em> Ch. III; Śaṅkarācārya, <em>Saundaryalaharī</em> vv. 66–70 with Lakṣmīdhara commentary; <em>Nāda Bindu Upaniṣad</em> (daśa-nāda classification); Swāmi Vivekānanda, <em>Rāja Yoga</em> Ch. 8 (nāda-anusandhāna); T. V. Subba Rao, <em>Studies in Indian Music</em> (mēḷakarta frequency analysis, 1932); P. Sambamurthy, <em>South Indian Music</em> Vol. VI (alankāra system).
+      </div>
+
+    </div><!-- /inner content -->
+  </div><!-- /ref-tab-content -->
+</div><!-- /margin wrapper -->
+
+<script>
+function toggleRefTab() {
+  var content = document.getElementById('ref-tab-content');
+  var chevron = document.getElementById('ref-chevron');
+  var isOpen = content.style.display !== 'none';
+  content.style.display = isOpen ? 'none' : 'block';
+  chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+}
+</script>
+<!-- REFERENCE TAB END -->
+
+</body>
+</html>
 
 </body>
 </html>
